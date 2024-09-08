@@ -17,10 +17,10 @@ export opts=-D_FORTIFY_SOURCE=2 -fno-diagnostics-show-option		\
 -Wzero-as-null-pointer-constant
 CXXFLAGS=-Wall $$opts
 
-assignment=mad_libs
+assignment=HW1
 
-$(assignment): $(assignment).o
-		g++ $(CXXFLAGS) -o $(assignment) $(assignment).cpp
+$(assignment): 
+		g++ $(CXXFLAGS) -o $(assignment) mad_libs.cpp
 
 tar:
 		tar -cf $(assignment).tar *.cpp Makefile

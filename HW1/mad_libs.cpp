@@ -68,7 +68,6 @@ bool IsFillInBlank(const string &word)
 string GetUserResponse(string &fill_in)
 {
   string out = fill_in;
-  size_t length = out.length();
 
   for (size_t i = 0; i < fill_in.length(); i++)
   {
@@ -80,15 +79,15 @@ string GetUserResponse(string &fill_in)
 
   if (out[0] == ' ')
   {
-    out.erase(0, 0);
+    out.erase(0, 1);
   }
-  if (out[length - 1] == ' ')
+  if (out[out.length() - 1] == ' ')
   {
-    out.erase(length - 1, length - 1);
+    out.erase(out.length() - 1, out.length() - 1);
   }
 
   string input;
-  cout << "Please enter a \"" << out << "\": ";
+  cout << "Please enter a \"" << out << "\" : ";
   cin >> input;
   return input;
 }
@@ -106,7 +105,6 @@ int main(int, char *argv[])
 
     while (getline(input_file, line))
     {
-
       stringstream ss(line);
       string word;
 
@@ -116,7 +114,7 @@ int main(int, char *argv[])
         {
           word = GetUserResponse(word);
         }
-        output.append(" " + word);
+        output.append(word + " ");
       }
       output.append("\n");
     }
