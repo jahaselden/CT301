@@ -41,15 +41,24 @@ bool GetMadLibFile(ifstream& input_file) {
   return true;
 }
 
-// TODO: Write Doxygen Commend Block
+/**
+ * IsFillInBlank
+ * @param word is string that must be checked for "fill in the blank" formatting
+ * @return a boolean: true if string is formatted as a "fill in the blank", false otherwise
+ */
 bool IsFillInBlank(const string& word) {
   // TODO: Check if string begins and ends with '_'. Remember that you can
   // access Strings as ArrayLike for characters
-
-         return false;
+  if (word[0] == '_' && word[word.length() - 1] == '_'){
+    return true;
+  }
+  return false;
 }
 
-// TODO: Write Doxygen Commend Block
+/**
+ * GetUserResponse
+ * 
+ */
 string GetUserResponse(string& fill_in) {
   string out;
   // TODO: Use a Loop to search each space of the string.

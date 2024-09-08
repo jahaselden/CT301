@@ -17,7 +17,7 @@ export opts=-D_FORTIFY_SOURCE=2 -fno-diagnostics-show-option		\
 -Wzero-as-null-pointer-constant
 CXXFLAGS=-Wall $$opts
 
-assignment=HW0
+assignment=mad_libs
 
 $(assignment): $(assignment).o
 		g++ $(CXXFLAGS) -o $(assignment) $(assignment).cpp
