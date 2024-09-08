@@ -7,8 +7,8 @@
 #include <vector>
 
 using namespace std;
-// TODO: Enter your First & Last Name
-// TODO: Enter your Net ID
+// Jennifer Haselden
+// jhaselde
 
 string program_name;
 // No Changes needed, this method queries a user for input
@@ -49,7 +49,7 @@ bool GetMadLibFile(ifstream& input_file) {
 bool IsFillInBlank(const string& word) {
   // TODO: Check if string begins and ends with '_'. Remember that you can
   // access Strings as ArrayLike for characters
-  if (word[0] == '_' && word[word.length() - 1] == '_'){
+  if (word[0] == '_' && word[word.length() - 1] == '_') {
     return true;
   }
   return false;
@@ -60,19 +60,37 @@ bool IsFillInBlank(const string& word) {
  * 
  */
 string GetUserResponse(string& fill_in) {
-  string out;
+  string out = fill_in; //is this a reference or a value?
+  size_t length = out.length();
   // TODO: Use a Loop to search each space of the string.
   // If the character is an "_" then replace it with a " "
   // Remember that strings are Mutable and ArrayLike.
-  //
   // Second tip: Remember that strings use "size_t" for their indexing and
   // length, so your loop variable will need to be of type size_t
-  //
+  
+  for (size_t i = 0; i < fill_in.length(); i++) {
+    if (fill_in[i] == '_') {
+      out[i] = ' ';
+    }
+  }
+
   // TODO: Query the user for the Fill in the blank word.
   //        Remember to remove any preceding or trailing " " characters
+
+  if (out[0] == ' ') {
+    out.erase(0, 0);
+  }
+  if (out[length - 1] == ' ') {
+    out.erase(length - 1, length - 1);
+  }
+
   // The format of the query is:
   //        "Please enter a "Fill in the blank word": "
-  return " ";
+
+  string input;
+  cout << "Please enter a " << out << ": ";
+  cin >> input;
+  return input;
 }
 
 // NOTE: No Doxygen comment needed for main!
@@ -84,7 +102,8 @@ int main(int, char* argv[]) {
     // NOTE: Your code goes here
     // NOTE: Get a line, check to see if any of the words in the line are a fill
     // in word. Remember that getline returns false if the filstream its reading
-    // from is in a working state Look into stringstreams as a method to read
+    // from is in a working state 
+    // Look into stringstreams as a method to read
     // one word at a time from a string, strinstreams by default white space
     // deliminate each word
     string line;    // A string to save each line of the input file to
@@ -92,6 +111,9 @@ int main(int, char* argv[]) {
 
     // Steps:
     //  1) Get the sentence from input_file
+
+    getline(input_file, line);
+
     //  2) For each word in the sentence (Use a stringstream) check
     //		a) Is it a fill in the blank word?
     //		b) Yes -> Request user response on that word
@@ -100,7 +122,21 @@ int main(int, char* argv[]) {
     //         stringstream check if its NOT EOF), add a space between words
     //  Once you finished reading all the words from the sentence print your
     //  madlib like below
+
+    stringstream ss(line);
+    string word;
+
+    while (ss >> word) {
+      if (IsFillInBlank(word)) {
+        word = GetUserResponse(word);
+      }
+        output.append(" " + word);
+    }
+
     // TODO: Output the finished madlib like so "Your MadLib!\n\n" followed by
     // their madlib and a new line at the end
+
+    cout << "Your MadLib!\n\n" << output << "\n";
+
   }
 }
