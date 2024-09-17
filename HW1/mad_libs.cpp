@@ -87,7 +87,7 @@ string GetUserResponse(string &fill_in)
   }
 
   string input;
-  cout << "Please enter a \"" << out << "\" : ";
+  cout << "Please enter a \"" << out << "\": ";
   cin >> input;
   return input;
 }
