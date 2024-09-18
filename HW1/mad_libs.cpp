@@ -67,28 +67,14 @@ bool IsFillInBlank(const string &word)
  */
 string GetUserResponse(string &fill_in)
 {
-  string out = fill_in;
+  replace(fill_in.begin(), fill_in.end(), '_', ' ');
 
-  for (size_t i = 0; i < fill_in.length(); i++)
-  {
-    if (fill_in[i] == '_')
-    {
-      out[i] = ' ';
-    }
-  }
-
-  if (out[0] == ' ')
-  {
-    out.erase(0, 1);
-  }
-  if (out[out.length() - 1] == ' ')
-  {
-    out.erase(out.length() - 1, out.length() - 1);
-  }
+  fill_in.erase(0, 1);
+  fill_in.erase(fill_in.length() - 1);
 
   string input;
-  cout << "Please enter a \"" << out << "\": ";
-  cin >> input;
+  cout << "Please enter a \"" << fill_in << "\": ";
+  getline(cin, input);
   return input;
 }
 
@@ -120,6 +106,6 @@ int main(int, char *argv[])
     }
 
     cout << "Your MadLib!\n\n"
-         << output << "\n";
+         << output << endl;
   }
 }
