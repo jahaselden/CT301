@@ -25,10 +25,8 @@ namespace GOL
             // Invalid file format
             throw(runtime_error("Invalid file format: first line must be width as an int, and the following lines must be the table"));
         }
-        cout << "WIDTH:" << width_ << endl;
         // Pre Load "Current" with the "dead_cell" character as a square table
         // Remember that the default dead character is '-'
-        // is this right..?
         this->height_ = width_;
         size_t size = width_ * height_;
         this->current_ = string(size, '-'); /*look up string fill ctor*/
@@ -56,11 +54,9 @@ namespace GOL
                     current_[replace_index] = '*';
                 }
             }
-            // should i add a newline here?
         }
     }
 
-    // TODO Implement the Game of Life Functions
     int game_of_life::Convert2DTo1D(int row, int col)
     {
         return (row * width_) + col;
@@ -68,7 +64,7 @@ namespace GOL
 
     int game_of_life::Get2DRow(int index)
     {
-        return index / width_; // does / automatically floor if int type?
+        return index / width_; 
     }
 
     int game_of_life::Get2DCol(int index)
@@ -179,6 +175,7 @@ namespace GOL
 
     void game_of_life::CompleteNextGen(string &next_gen_game){
         current_ = next_gen_game;
+        generations_++;
     }
 
     bool game_of_life::CheckCellState(size_t cell_index)
@@ -232,12 +229,15 @@ namespace GOL
     // TODO Finish the Operator<< method for outputting your game of life
     ostream &operator<<(ostream &os, const game_of_life &game)
     {
+        cout << "Generation: " << game.generations_ << endl;
+
         for (size_t i = 0; i < game.current_.length() + 1; i++){
             os << game.current_[i];
             if ((i + 1) % game.width_ == 0){
                 os << endl;
             }
         }
+
         return os;
     }
 }
