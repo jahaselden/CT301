@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         string filename = argv[1];
         ifstream file(filename);
 
-        if (!file.is_open())
+        if (file.is_open())
         {
             cerr << "Error! Could not open file: " << filename << endl;
             return 1;
@@ -144,7 +144,18 @@ int main(int argc, char *argv[])
                 }
             }
 
-            // print shapes vector using the operator method
+            for (Collider *shape_obj : shapes)
+            {
+                if (const Rectangle *const target = dynamic_cast<const Rectangle *const>(shape_obj)){
+                    cout << target;
+                }
+                if (const Circle *const target = dynamic_cast<const Circle *const>(shape_obj)){
+                    cout << target;
+                }
+                if (const Square *const target = dynamic_cast<const Square *const>(shape_obj)){
+                    cout << target;
+                }
+            }
 
             file.close();
             return 0;

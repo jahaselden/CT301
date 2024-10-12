@@ -8,7 +8,7 @@ using namespace std;
 Rectangle::Rectangle() : Rectangle(1, 1) {} // Defalt width is 1
 Rectangle::Rectangle(double width, double height) : Rectangle(0, 0, width, height) {}
 Rectangle::Rectangle(int x, int y) : Rectangle(x, y, 1, 1) {}
-Rectangle::Rectangle(int x, int y, double width, double height) : Square(x, y, width),  height_(height){}
+Rectangle::Rectangle(int x, int y, double width, double height) : Square(x, y, width), height_(height) {}
 
 double Rectangle::GetHeight() const { return this->height_; }
 
@@ -86,7 +86,7 @@ bool Rectangle::Collides(const Collider &other) const
         int s2_left_x = other.GetX() - (target->GetWidth() / 2);
         int s2_upper_y = other.GetY() + (target->GetWidth() / 2);
         int s2_lower_y = other.GetY() - (target->GetWidth() / 2);
-        
+
         // compare x-axis values for collision
         if (s1_right_x >= s2_left_x && s1_left_x <= s2_right_x)
         {
@@ -99,9 +99,8 @@ bool Rectangle::Collides(const Collider &other) const
         }
         // if both return false, there is a collision
         return true;
-        
     }
-    //default i
+    // default i
     return false;
 }
 
