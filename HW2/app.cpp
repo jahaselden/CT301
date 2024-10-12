@@ -2,11 +2,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <square.h>
-#include <circle.h>
-#include <rectangle.h>
 #include <vector>
-#include <collider.h>
+
+#include "square.h"
+#include "circle.h"
+#include "rectangle.h"
+#include "collider.h"
 
 using namespace std;
 using namespace colliders;
@@ -20,7 +21,7 @@ using namespace colliders;
  * the case, shapes are added to the current shapes.
  * @returns an int representing success or failure of program
  */
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     string program_name = argv[0];
     if (argc < 2)
@@ -42,7 +43,7 @@ main(int argc, char *argv[])
         }
 
         // create a vector of type collision to store all the shapes
-        vector<Collider> shapes;
+        vector<Collider *> shapes;
         string line;
         while (getline(file, line))
         {
@@ -53,14 +54,20 @@ main(int argc, char *argv[])
             if (!(shape >> name))
             {
                 cerr << "Error: " << program_name << endl
-                     << "Invalid data: " << line << endl;
+                     << "Invalid shape type: " << line << endl;
                 return -1;
             }
+
+            int x, y;
+            double width;
+            double height;
+            double radius;
+            bool collides = false;
+
+            Collider *shape_;
             // if shape name "is "Square"
             if (name.compare("Square"))
             {
-                int x, y;
-                double width;
                 if (!(shape >> x >> y >> width))
                 {
                     cerr << "Error: " << program_name << endl
@@ -69,59 +76,78 @@ main(int argc, char *argv[])
                 else
                 {
                     // create square object
-                    Square square = new Square(x, y, width);
-                    // if vector is empty
-                    if (shapes.size() == 0 || !square.Collides()){
-                        shapes.push_back(square);
-                    }
-                }
-            }
-
-            // if shape name is "Rectangle"
-            if (name.compare("Rectangle"))
-            {
-                int x, y;
-                double width, height;
-                if (!(shape >> x >> y >> width >> height))
-                {
-                    cerr << "Error: " << program_name << endl
-                         << "Invalid data: " << line << endl;
-                }
-                else
-                {
-                    // create rectangle object
-                    Rectangle rec = new Rectangle(x, y, width, height);
-
-                    // if vector is empty
-                    if (shapes.size() == 0 || !rec.Collides()){
-                        shapes.push_back(rec);
-                    }
-                }
-            }
-            // if shape name is "Circle"
-            if (name.compare("Circle"))
-            {
-                int x, y;
-                int radius;
-                if (!(shape >> x >> y >> radius))
-                {
-                    cerr << "Error: " << program_name << endl
-                         << "Invalid data: " << line << endl;
-                }
-                else
-                {
-                    // create circle object - do these need to be pointers?
-                    Circle circle = new Circle(x, y, radius);
-                    // if vector is empty
-                    if (shapes.size() == 0 || !circle.Collides())
+                    shape_ = new Square(x, y, width);
+                    for (Collider *shape_obj : shapes)
                     {
-                        shapes.push_back(circle);
+                        if (shape_->Collides(*shape_obj))
+                        {
+                            collides = true;
+                        }
+                    }
+                    if (!collides)
+                    {
+                        shapes.push_back(shape_);
+                    }
+                }
+
+                // if shape name is "Rectangle"
+                if (name.compare("Rectangle"))
+                {
+
+                    if (!(shape >> x >> y >> width >> height))
+                    {
+                        cerr << "Error: " << program_name << endl
+                             << "Invalid data: " << line << endl;
+                    }
+                    else
+                    {
+                        // create rectangle object
+                        shape_ = new Rectangle(x, y, width, height);
+                        for (Collider *shape_obj : shapes)
+                        {
+                            if (shape_->Collides(*shape_obj))
+                            {
+                                collides = true;
+                            }
+                        }
+                        if (!collides)
+                        {
+                            shapes.push_back(shape_);
+                        }
+                    }
+                }
+                // if shape name is "Circle"
+                if (name.compare("Circle"))
+                {
+                    //
+                    if (!(shape >> x >> y >> radius))
+                    {
+                        cerr << "Error: " << program_name << endl
+                             << "Invalid data: " << line << endl;
+                    }
+                    else
+                    {
+                        // create circle object
+                        shape_ = new Circle(x, y, radius);
+                        for (Collider *shape_obj : shapes)
+                        {
+                            if (shape_->Collides(*shape_obj))
+                            {
+                                collides = true;
+                            }
+                        }
+                        if (!collides)
+                        {
+                            shapes.push_back(shape_);
+                        }
                     }
                 }
             }
-        }
 
-        file.close();
-        return 0;
+            // print shapes vector using the operator method
+
+            file.close();
+            return 0;
+        }
     }
 }
