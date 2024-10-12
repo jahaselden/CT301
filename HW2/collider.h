@@ -10,6 +10,7 @@ class Collider {
   int GetX() const {return this->x_;}
   int GetY() const {return this->y_;}
   virtual bool Collides(const Collider&) const = 0;
+  virtual ~Collider() = default;
 };
 }  // namespace colliders
 

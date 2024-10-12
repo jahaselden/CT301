@@ -6,18 +6,51 @@
 namespace colliders
 {
     class Square : public Collider
-    {
+    {   
+        /**
+         * width of the square
+         */
         double width_;
 
     public:
-        Square();                 // Default constructor
-        Square(double);           // Size constructor
-        Square(int, int);         // Centroid constructor
-        Square(int, int, double); // Centroid and Size constructor
+        /**
+         * Default ctor
+         */
+        Square();             
 
-        double GetWidth() const;    // Width Getter
+        /**
+         * Size ctor
+         * @param double the square width
+         */
+        Square(double);
 
-        bool Collides(const Collider &) const; // Method definition for Virtual method Collides
+        /**
+         * Centroid ctor
+         * @param int, int are the x and y coordinates of center point coordinates of square
+         */
+        Square(int, int);        
+        
+        /**
+         * Centroid and Size ctor
+         * @param int, int are the x and y coordinates of center point coordinates of square
+         * @param double the square width
+         */
+        Square(int, int, double);
+
+        /**
+         * GetWidth
+         * @returns width of the square
+         */
+        double GetWidth() const;        
+        
+        /**
+         * Collides: virtual method implementation
+         * Handles Square to Square and Square to Circle collision but passes Square to 
+         * Rectangle collision to Rectangle's collide
+         * @param Collider object is any shape that inherits from collider
+         * @returns returns true if there is a collision, false otherwise
+         */
+        bool Collides(const Collider &) const; 
     };
 }
 
