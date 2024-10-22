@@ -16,7 +16,7 @@ namespace GOL
 
     GameOfLife::GameOfLife(std::string filename, char live, char dead) : GameOfLife(filename, live, dead, 0) {}
 
-    GameOfLife::GameOfLife(std::string filename, char live, char dead, int generations) : generations_(generations) // i don't think this is correct
+    GameOfLife::GameOfLife(std::string filename, char live, char dead, int generations)
     {
         // Create a file input using the user's input
         fstream file_in(filename);
@@ -66,6 +66,9 @@ namespace GOL
                     current_[replace_index] = live_cell;
                 }
             }
+        }
+        if (generations > 0){
+            NextNGen(generations);
         }
     }
 
