@@ -68,7 +68,6 @@ namespace GOL
     void GameOfLife::NextGen()
     {
         std::string next_gen = current_; // initialize next gen string to current game
-
         // for all cells in the current_ game
         for (size_t i = 0; i < current_.length(); i++)
         {
@@ -84,8 +83,7 @@ namespace GOL
             // check the current cell's neighbor's states
             int living_neighbors = CheckLivingNeighbors(i);
 
-            // based on current cell state and neighbors of current cell, change
-            // cell state for next gen
+            // based on current cell state and neighbors of current cell, change cell state for next gen
             bool alive_in_next_gen = DetermineCellStateForNextGen(living_neighbors, alive);
 
             // track living cells of next gen
@@ -93,7 +91,6 @@ namespace GOL
             {
                 next_living_cells++;
             }
-
             SetCellState(alive_in_next_gen, i, next_gen);
         }
         // when all cells have been accounted for - move on to next round
@@ -109,7 +106,7 @@ namespace GOL
         int upper_row = GetUpperRow(middle_row);
         int lower_row = GetLowerRow(middle_row);
 
-        // try array loop instead of a bunch of if else statements for comparison
+        // array of cell neighbors
         int neighbors[8] = {Convert2DTo1D(upper_row, left_col),
                             Convert2DTo1D(middle_row, left_col),
                             Convert2DTo1D(lower_row, left_col),
@@ -202,14 +199,9 @@ namespace GOL
         return (row * width_) + col;
     }
 
-    int GameOfLife::Get2DRow(int index)
-    {
-        return index / width_;
-    }
-
     int GameOfLife::Get2DCol(int index)
     {
-        return index % height_;
+        return index % width_;
     }
 
     int GameOfLife::GetLeftCol(int col)
@@ -220,6 +212,11 @@ namespace GOL
     int GameOfLife::GetRightCol(int col)
     {
         return (col + 1) % width_;
+    }
+
+    int GameOfLife::Get2DRow(int index)
+    {
+        return index / width_;
     }
 
     int GameOfLife::GetUpperRow(int row)
