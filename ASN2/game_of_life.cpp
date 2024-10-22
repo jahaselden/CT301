@@ -37,7 +37,6 @@ namespace GOL
             dead_cell = dead;
         }
         // Pre Load "Current" with the "dead_cell" character as a rectangle table
-        this->height_ = width_;
         size_t size = width_ * height_;
         this->current_ = string(size, dead_cell);
         string line;
