@@ -54,7 +54,7 @@ namespace GOL
             for (int col = 0; col < this->width_; ++col)
             {
                 // if the char is alive in the line, set it to be alive in current game
-                if (line.at(col) == live_cell)
+                if (line.at(col) == '*')
                 {
                     living_cells++;
                     int replace_index = (row * width_) + col;

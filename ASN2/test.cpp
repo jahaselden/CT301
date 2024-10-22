@@ -11,6 +11,14 @@ int main(int argc, char const *argv[])
     game.NextGen();
     cout << ++game;
 	cout << (game + 10);
-	cout << game;
+	cout << game; 
+
+    // GameOfLife game("starter_2.txt", 'l', '-');
+    // cout << game;
+    // game.NextGen();
+    // cout << ++game;
+	// cout << (game + 10);
+	// cout << game;
+
     return 0;
 }
