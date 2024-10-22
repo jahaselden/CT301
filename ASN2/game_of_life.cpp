@@ -186,7 +186,7 @@ namespace GOL
     void GameOfLife::CompleteNextGen(string &next_gen_game)
     {
         current_ = next_gen_game;
-        // generations_++;
+        generations_++;
         living_cells = next_living_cells;
     }
 
