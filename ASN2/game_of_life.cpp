@@ -113,15 +113,6 @@ namespace GOL
         int upper_row = GetUpperRow(middle_row);
         int lower_row = GetLowerRow(middle_row);
 
-        // int up_left = Convert2DTo1D(upper_row, left_col);
-        // int middle_left = Convert2DTo1D(middle_row, left_col);
-        // int lower_left = Convert2DTo1D(lower_row, left_col);
-        // int up_middle = Convert2DTo1D(upper_row, middle_col);
-        // int down_middle = Convert2DTo1D(lower_row, middle_col);
-        // int up_right = Convert2DTo1D(upper_row, right_col);
-        // int middle_right = Convert2DTo1D(middle_row, right_col);
-        // int lower_right = Convert2DTo1D(lower_row, right_col);
-
         // try array loop instead of a bunch of if else statements for comparison
         int neighbors[8] = {Convert2DTo1D(upper_row, left_col),
                             Convert2DTo1D(middle_row, left_col),
