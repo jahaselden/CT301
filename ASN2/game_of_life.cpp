@@ -26,13 +26,14 @@ namespace GOL
         }
         if (!(file_in >> this->width_ >> this->height_))
         {
-            throw(runtime_error("Invalid file format: first line must be width as an int, and the following lines must be the table."));
+            throw(runtime_error("Invalid file format: first line must be width and height as an int, and the following lines must be the table."));
         }
         if (live == dead)
         {
             throw(runtime_error("Invalid arguments for live and dead cells; must be different characters."));
         }
-        else {
+        else
+        {
             live_cell = live;
             dead_cell = dead;
         }
