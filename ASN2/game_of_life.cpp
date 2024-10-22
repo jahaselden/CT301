@@ -41,23 +41,18 @@ namespace GOL
         size_t size = width_ * height_;
         this->current_ = string(size, dead_cell);
         string line;
-        getline(file_in, line);
+
         // Skipping the end of the first line to get to the data
-        // If you do not include this, then the first "getline"
-        // will get an empty string
+        // If you do not include this, then the first "getline" will get an empty string
+        getline(file_in, line);
 
         // For all rows in the file
-        for (int row = 0; row < this->width_; ++row)
+        for (int row = 0; row < this->height_; ++row)
         {
             getline(file_in, line);
             // For all Columns in the row
-            for (int col = 0; col < this->height_; ++col)
+            for (int col = 0; col < this->width_; ++col)
             {
-                // TODO: When you find a "living" character inside of "line"
-                // Set the character at the same index inside of current to be "live"
-                // Remember that the default live character is '*'
-                // Check the assignment page for the math logic for 2d to 1d conversion
-
                 // if the char is alive in the line, set it to be alive in current game
                 if (line.at(col) == live_cell)
                 {
@@ -105,7 +100,7 @@ namespace GOL
         CompleteNextGen(next_gen);
     }
 
-    int GameOfLife::CheckLivingNeighbors(int cell_index) // might need to be size_t
+    int GameOfLife::CheckLivingNeighbors(int cell_index)
     {
         int middle_row = Get2DRow(cell_index);
         int middle_col = Get2DCol(cell_index);
