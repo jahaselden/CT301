@@ -8,34 +8,44 @@
 
 using namespace std;
 //@author Jennifer Haselden
-// Include the Namespace for Game of Life
 namespace GOL
 {
-    GameOfLife::GameOfLife(string filename)
+    GameOfLife::GameOfLife(string filename) : GameOfLife(filename, '*', '-', 0) {}
+
+    GameOfLife::GameOfLife(std::string filename, int generations) : GameOfLife(filename, '*', '-', generations) {}
+
+    GameOfLife::GameOfLife(std::string filename, char live, char dead) : GameOfLife(filename, live, dead, 0) {}
+
+    GameOfLife::GameOfLife(std::string filename, char live, char dead, int generations) : generations_(generations) // i don't think this is correct
     {
         // Create a file input using the user's input
         fstream file_in(filename);
         if (!file_in)
         {
-            // File not found
-            throw(runtime_error("File not found as entered: please make sure file path is correct"));
+            throw(runtime_error("File not found as entered: please make sure file path is correct."));
         }
-        if (!(file_in >> this->width_))
+        if (!(file_in >> this->width_ >> this->height_))
         {
-            // Invalid file format
-            throw(runtime_error("Invalid file format: first line must be width as an int, and the following lines must be the table"));
+            throw(runtime_error("Invalid file format: first line must be width as an int, and the following lines must be the table."));
         }
-        // Pre Load "Current" with the "dead_cell" character as a square table
-        // Remember that the default dead character is '-'
+        if (live == dead)
+        {
+            throw(runtime_error("Invalid arguments for live and dead cells; must be different characters."));
+        }
+        else {
+            live_cell = live;
+            dead_cell = dead;
+        }
+        // Pre Load "Current" with the "dead_cell" character as a rectangle table
         this->height_ = width_;
         size_t size = width_ * height_;
-        this->current_ = string(size, '-'); /*look up string fill ctor*/
-
+        this->current_ = string(size, dead_cell);
         string line;
         getline(file_in, line);
         // Skipping the end of the first line to get to the data
         // If you do not include this, then the first "getline"
         // will get an empty string
+
         // For all rows in the file
         for (int row = 0; row < this->width_; ++row)
         {
@@ -49,28 +59,14 @@ namespace GOL
                 // Check the assignment page for the math logic for 2d to 1d conversion
 
                 // if the char is alive in the line, set it to be alive in current game
-                if (line.at(col) == '*')
+                if (line.at(col) == live_cell)
                 {
+                    living_cells++;
                     int replace_index = (row * width_) + col;
-                    current_[replace_index] = '*';
+                    current_[replace_index] = live_cell;
                 }
             }
         }
-    }
-
-    int GameOfLife::Convert2DTo1D(int row, int col)
-    {
-        return (row * width_) + col;
-    }
-
-    int GameOfLife::Get2DRow(int index)
-    {
-        return index / width_;
-    }
-
-    int GameOfLife::Get2DCol(int index)
-    {
-        return index % height_;
     }
 
     void GameOfLife::NextGen()
@@ -83,12 +79,25 @@ namespace GOL
             // check current cell's state
             bool alive = CheckCellState(i);
 
+            // update live cell count
+            if (alive)
+            {
+                living_cells++;
+            }
+
             // check the current cell's neighbor's states
             int living_neighbors = CheckLivingNeighbors(i);
 
             // based on current cell state and neighbors of current cell, change
             // cell state for next gen
             bool alive_in_next_gen = DetermineCellStateForNextGen(living_neighbors, alive);
+
+            // track living cells of next gen
+            if (alive_in_next_gen)
+            {
+                next_living_cells++;
+            }
+
             SetCellState(alive_in_next_gen, i, next_gen);
         }
         // when all cells have been accounted for - move on to next round
@@ -128,7 +137,7 @@ namespace GOL
         // increment living_neighbors if char is * of cell
         for (int neighbor_index : neighbors)
         {
-            if (current_.at(neighbor_index) == '*')
+            if (current_.at(neighbor_index) == live_cell)
             {
                 living_neighbors++;
             }
@@ -166,23 +175,24 @@ namespace GOL
     {
         if (alive)
         {
-            next_gen_game[cell_index] = '*';
+            next_gen_game[cell_index] = live_cell;
         }
         else
         {
-            next_gen_game[cell_index] = '-';
+            next_gen_game[cell_index] = dead_cell;
         }
     }
 
     void GameOfLife::CompleteNextGen(string &next_gen_game)
     {
         current_ = next_gen_game;
-        generations_++;
+        // generations_++;
+        living_cells = next_living_cells;
     }
 
     bool GameOfLife::CheckCellState(size_t cell_index)
     {
-        if (current_[cell_index] == '*')
+        if (current_[cell_index] == live_cell)
         {
             return true;
         }
@@ -201,6 +211,21 @@ namespace GOL
                 NextGen();
             }
         }
+    }
+
+    int GameOfLife::Convert2DTo1D(int row, int col)
+    {
+        return (row * width_) + col;
+    }
+
+    int GameOfLife::Get2DRow(int index)
+    {
+        return index / width_;
+    }
+
+    int GameOfLife::Get2DCol(int index)
+    {
+        return index % height_;
     }
 
     int GameOfLife::GetLeftCol(int col)
@@ -228,7 +253,131 @@ namespace GOL
         return generations_;
     }
 
-    // TODO Finish the Operator<< method for outputting your game of life
+    void GameOfLife::SetLiveCell(char new_char)
+    {
+        if (new_char == dead_cell)
+        {
+            throw(runtime_error("Error: New live cell cannot be same as current dead cell."));
+        }
+        else
+        {
+            // update current game with new char
+            int len = current_.length();
+            for (int i = 0; i < len; i++)
+            {
+                if (current_[i] == live_cell)
+                {
+                    current_[i] = new_char;
+                }
+            }
+            live_cell = new_char;
+        }
+    }
+
+    void GameOfLife::SetDeadCell(char new_char)
+    {
+        if (new_char == live_cell)
+        {
+            throw(runtime_error("Error: New dead cell cannot be same as current live cell."));
+        }
+        else
+        {
+            // update current game with new char
+            int len = current_.length();
+            for (int i = 0; i < len; i++)
+            {
+                if (current_[i] == dead_cell)
+                {
+                    current_[i] = new_char;
+                }
+            }
+            dead_cell = new_char;
+        }
+    }
+
+    GameOfLife GameOfLife::operator+(int n) const
+    {
+        GameOfLife copy = *this;
+        copy.NextNGen(n);
+        return copy;
+    }
+
+    GameOfLife &GameOfLife::operator+=(int n)
+    {
+        this->NextNGen(n);
+        return *this;
+    }
+
+    GameOfLife &GameOfLife::operator++()
+    {
+        this->NextGen();
+        return *this;
+    }
+
+    GameOfLife GameOfLife::operator++(int)
+    {
+        GameOfLife copy = *this;
+        this->NextGen();
+        return copy;
+    }
+
+    double GameOfLife::GetPercentLiving() const
+    {
+        double total_cells = width_ * height_;
+        double percent_living = living_cells / total_cells;
+        return percent_living * 100;
+    }
+
+    bool GameOfLife::operator<(const GameOfLife &other_game) const
+    {
+        double curr_percent_living = this->GetPercentLiving();
+        double other_percent_living = other_game.GetPercentLiving();
+        return curr_percent_living < other_percent_living;
+    }
+
+    bool GameOfLife::operator>(const GameOfLife &other_game) const
+    {
+        double curr_percent_living = this->GetPercentLiving();
+        double other_percent_living = other_game.GetPercentLiving();
+        return curr_percent_living > other_percent_living;
+    }
+
+    bool GameOfLife::operator==(const GameOfLife &other_game) const
+    {
+        bool compare = false;
+        double curr_percent_living = this->GetPercentLiving();
+        double other_percent_living = other_game.GetPercentLiving();
+        if (curr_percent_living + .5 == other_percent_living || curr_percent_living - .5 == other_percent_living || curr_percent_living == other_percent_living)
+        {
+            compare = true;
+        }
+        return compare;
+    }
+
+    bool GameOfLife::operator<=(const GameOfLife &other_game) const
+    {
+        bool compare = false;
+        double curr_percent_living = this->GetPercentLiving();
+        double other_percent_living = other_game.GetPercentLiving();
+        if (curr_percent_living + .5 <= other_percent_living || curr_percent_living - .5 <= other_percent_living || curr_percent_living <= other_percent_living)
+        {
+            compare = true;
+        }
+        return compare;
+    }
+
+    bool GameOfLife::operator>=(const GameOfLife &other_game) const
+    {
+        bool compare = false;
+        double curr_percent_living = this->GetPercentLiving();
+        double other_percent_living = other_game.GetPercentLiving();
+        if (curr_percent_living + .5 >= other_percent_living || curr_percent_living - .5 >= other_percent_living || curr_percent_living >= other_percent_living)
+        {
+            compare = true;
+        }
+        return compare;
+    }
+
     ostream &operator<<(ostream &os, const GameOfLife &game)
     {
         cout << "Generation: " << game.generations_ << endl;
