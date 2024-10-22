@@ -67,9 +67,7 @@ namespace GOL
                 }
             }
         }
-        if (generations > 0){
-            NextNGen(generations);
-        }
+        NextNGen(generations);
     }
 
     void GameOfLife::NextGen()
@@ -198,12 +196,9 @@ namespace GOL
 
     void GameOfLife::NextNGen(int n)
     {
-        if (n > 0)
+        for (int i = 0; i < n; i++)
         {
-            for (int i = 0; i < n; i++)
-            {
-                NextGen();
-            }
+            NextGen();
         }
     }
 
