@@ -155,25 +155,11 @@ void double_vector::reallocate(size_t n)
     capacity_ = n;
     double *new_data = new double[capacity_];
 
+    int values = capacity_ < size_ ? capacity_ : size_;
     // if n is smaller than old data's size, only copy n values into new array
-    if (capacity_ < size_)
+    for (int i = 0; i < values; ++i)
     {
-        for (int i = 0; i < capacity_; ++i)
-        {
-            new_data[i] = data_[i];
-        }
-    }
-    else
-    {
-        for (int i = 0; i < size_; ++i)
-        {
-            new_data[i] = data_[i];
-        }
-        // set any data beyond the size to be 0;
-        for (int i = size_; i < capacity_; ++i)
-        {
-            new_data[i] = 0;
-        }
+        new_data[i] = data_[i];
     }
 
     delete[] data_;
