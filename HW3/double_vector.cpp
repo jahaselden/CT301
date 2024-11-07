@@ -15,7 +15,14 @@ double_vector::double_vector(size_t capacity) : size_(0)
     {
         capacity_ = capacity;
     }
-    this->data_ = new double[this->capacity_];
+    if (capacity_ == 0)
+    {
+        data_ = new double[1];
+    }
+    else
+    {
+        data_ = new double[capacity_];
+    }
 }
 
 double_vector::double_vector(const double_vector &rhs)
@@ -32,6 +39,7 @@ double_vector &double_vector::operator=(const double_vector &rhs)
     {
         data_[i] = rhs.data_[i];
     }
+    return *this;
 }
 
 double_vector::~double_vector()
@@ -70,19 +78,19 @@ void double_vector::resize(size_t n, double val)
     // if n is smaller than old data's size, only copy n values into new array
     if (capacity_ < size_)
     {
-        for (int i = 0; i < capacity_; ++i)
+        for (size_t i = 0; i < capacity_; ++i)
         {
             new_data[i] = data_[i];
         }
     }
     else
     {
-        for (int i = 0; i < size_; ++i)
+        for (size_t i = 0; i < size_; ++i)
         {
             new_data[i] = data_[i];
         }
         // set any data beyond the size to be 0;
-        for (int i = size_; i < capacity_; ++i)
+        for (size_t i = size_; i < capacity_; ++i)
         {
             new_data[i] = val;
         }
@@ -98,13 +106,14 @@ bool double_vector::empty()
     return size_ == 0 ? true : false;
 }
 
-void double_vector::reserve(size_t n)
-{
-}
+// void double_vector::reserve(size_t n)
+// {
+//     if (n > capacity_)
+// }
 
-void double_vector::shrink_to_fit()
-{
-}
+// void double_vector::shrink_to_fit()
+// {
+// }
 
 // ELEMENT ACCESS
 
@@ -137,13 +146,13 @@ double *double_vector::data()
     return data_;
 }
 
-double_vector::iterator begin()
-{
-}
+// double_vector::iterator double_vector::begin() const
+// {
+// }
 
-double_vector::iterator end()
-{
-}
+// double_vector::iterator double_vector::end() const
+// {
+// }
 
 // MODIFIERS
 void double_vector::reallocate(size_t n)
@@ -152,8 +161,18 @@ void double_vector::reallocate(size_t n)
     {
         n = max_size();
     }
+
     capacity_ = n;
-    double *new_data = new double[capacity_];
+    double *new_data;
+
+    if (capacity_ == 0)
+    {
+        new_data = new double[1];
+    }
+    else
+    {
+        new_data = new double[capacity_];
+    }
 
     int values = capacity_ < size_ ? capacity_ : size_;
     // if n is smaller than old data's size, only copy n values into new array
@@ -186,54 +205,79 @@ void double_vector::push_back(const double &val)
 
 void double_vector::pop_back()
 {
-    data_[size_] = NULL;
+    data_[size_] = 0;
     --size_;
 }
 
-void double_vector::swap(double_vector &other)
-{
-    // double *temp = other;
-    // other = data_;
-    // data_ = temp;
-    // delete[] temp;
-    // temp = nullptr;
-}
+// void double_vector::swap(double_vector &other)
+// {
+//     double *temp = other;
+//     other = data_;
+//     data_ = temp;
+//     delete[] temp;
+//     temp = nullptr;
+// }
 
 void double_vector::clear()
 {
-    for (int i = 0; i < size_; i++)
+    for (size_t i = 0; i < size_; i++)
     {
-        data_[i] = NULL;
+        data_[i] = 0;
     }
     size_ = 0;
 }
 
 // ITERATOR SUBCLASS
+double *double_vector::iterator::get_ptr()
+{
+    return ptr;
+}
 
 double_vector::iterator &double_vector::iterator::operator++()
 {
+    ++ptr;
+    return *this;
 }
 
 double_vector::iterator double_vector::iterator::operator++(int)
 {
+    iterator copy = *this;
+    ++ptr;
+    return copy;
 }
 
 double_vector::iterator &double_vector::iterator::operator--()
 {
+    --ptr;
+    return *this;
 }
 
 double_vector::iterator double_vector::iterator::operator--(int)
 {
+    iterator copy = *this;
+    --ptr;
+    return copy;
 }
 
 double &double_vector::iterator::operator*()
 {
+    return *ptr;
 }
 
-bool double_vector::iterator::operator==(const iterator &) const
+bool double_vector::iterator::operator==(const iterator &other) const
 {
+    if (&ptr == &other.ptr)
+    {
+        return true;
+    }
+    return false;
 }
 
-bool double_vector::iterator::operator!=(const iterator &) const
+bool double_vector::iterator::operator!=(const iterator &other) const
 {
+    if (&ptr != &other.ptr)
+    {
+        return true;
+    }
+    return false;
 }
