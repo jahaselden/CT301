@@ -215,14 +215,13 @@ void double_vector::pop_back()
     --size_;
 }
 
-// void double_vector::swap(double_vector &other)
-// {
-//     double *temp = other;
-//     other = data_;
-//     data_ = temp;
-//     delete[] temp;
-//     temp = nullptr;
-// }
+void double_vector::swap(double_vector &other)
+{
+    double_vector temp = other;
+    other = *this;
+    *this = temp;
+    // do i need to delete temp?
+}
 
 void double_vector::clear()
 {
