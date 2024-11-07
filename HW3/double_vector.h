@@ -222,13 +222,8 @@ public:
          * @returns trues if they are not in the same index or memory location
          */
         bool operator!=(const iterator &) const;
-
-        /**
-         * get_ptr
-         * @returns pointer of iterator object
-         */
-        double *get_ptr();
         
+        friend class double_vector;
     };
 
     // where do these go

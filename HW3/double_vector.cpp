@@ -149,12 +149,16 @@ double *double_vector::data()
 
 double_vector::iterator double_vector::begin() const
 {
-    this->ptr = data_
+    double_vector::iterator begin; //= new double_vector::iterator();
+    begin.ptr = this->data_;
+    return begin;
 }
 
 double_vector::iterator double_vector::end() const
 {
-    data_[size_];
+    double_vector::iterator end;
+    end.ptr = this->data_[size_];
+    return end;
 }
 
 // MODIFIERS
@@ -228,10 +232,6 @@ void double_vector::clear()
 }
 
 // ITERATOR SUBCLASS
-double *double_vector::iterator::get_ptr()
-{
-    return ptr;
-}
 
 double_vector::iterator &double_vector::iterator::operator++()
 {
