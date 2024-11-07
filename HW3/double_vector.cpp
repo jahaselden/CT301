@@ -16,7 +16,7 @@ double_vector::double_vector(size_t capacity) : size_(0)
     {
         capacity_ = capacity;
     }
-    if (capacity_ != 0) //data_ will stay a nullptr otherwise
+    if (capacity_ != 0) // data_ will stay a nullptr otherwise
     {
         data_ = new double[capacity_];
     }
@@ -69,30 +69,31 @@ void double_vector::resize(size_t n)
 
 void double_vector::resize(size_t n, double val)
 {
-    capacity_ = n;
-    double *new_data = new double[capacity_];
+    double *new_data = new double[n];
 
     // if n is smaller than old data's size, only copy n values into new array
-    if (capacity_ < size_)
+    if (n < size_)
     {
-        for (size_t i = 0; i < capacity_; ++i)
+        for (size_t i = 0; i < n; ++i)
         {
             new_data[i] = data_[i];
         }
     }
-    else
+    else // n is greater than size_
     {
+        // copy old data to new data up to size
         for (size_t i = 0; i < size_; ++i)
         {
             new_data[i] = data_[i];
         }
-        // set any data beyond the size to be 0;
-        for (size_t i = size_; i < capacity_; ++i)
+        // set new data beyond the size to be 0 (up to capacity)
+        for (size_t i = size_; i < n; ++i)
         {
             new_data[i] = val;
         }
     }
 
+    capacity_ = n;
     delete[] data_;
     data_ = new_data;
     new_data = nullptr;
@@ -149,7 +150,7 @@ double *double_vector::data()
 
 double_vector::iterator double_vector::begin() const
 {
-    double_vector::iterator begin; //= new double_vector::iterator();
+    double_vector::iterator begin;
     begin.ptr = this->data_;
     return begin;
 }
@@ -157,7 +158,11 @@ double_vector::iterator double_vector::begin() const
 double_vector::iterator double_vector::end() const
 {
     double_vector::iterator end;
-    end.ptr = this->data_[size_];
+    // size_t is 8 bytes, iterate through using ints to get to last element
+    for (size_t i = 0; i < size_; i++)
+    {
+        ++end.ptr;
+    }
     return end;
 }
 
@@ -226,7 +231,7 @@ void double_vector::swap(double_vector &other)
 
 void double_vector::clear()
 {
-    delete [] data_;
+    delete[] data_;
     data_ = new double[capacity_];
     size_ = 0;
 }

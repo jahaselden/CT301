@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 /**
  * main
  * @param argc the program name being called
@@ -6,4 +10,9 @@
  */
 int main(int argc, char *argv[])
 {
+    cout << sizeof(size_t) << endl;
+    cout << sizeof(int) << endl;
+    size_t test = 1;
+    int tested = static_cast<int>(test);
+    cout << sizeof(test);
 }
