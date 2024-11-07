@@ -1,6 +1,7 @@
 #include "double_vector.h"
 #include <cstddef>
 #include <stddef.h>
+#include <cmath>
 
 using namespace std;
 
@@ -57,7 +58,7 @@ size_t double_vector::size()
 
 size_t double_vector::max_size()
 {
-    return ((2 ^ 32) / sizeof(double)) - 1;
+    return (pow(2, 32) / sizeof(double)) - 1;
 }
 
 size_t double_vector::capacity()
