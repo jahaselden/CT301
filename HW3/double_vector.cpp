@@ -16,11 +16,7 @@ double_vector::double_vector(size_t capacity) : size_(0)
     {
         capacity_ = capacity;
     }
-    if (capacity_ == 0)
-    {
-        data_ = new double[1];
-    }
-    else
+    if (capacity_ != 0) //data_ will stay a nullptr otherwise
     {
         data_ = new double[capacity_];
     }
@@ -173,7 +169,7 @@ void double_vector::reallocate(size_t n)
 
     if (capacity_ == 0)
     {
-        new_data = new double[1];
+        new_data = nullptr;
     }
     else
     {
