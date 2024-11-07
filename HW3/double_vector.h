@@ -176,7 +176,7 @@ public:
     // ITERATOR SUBCLASS
     class iterator
     {
-        double *ptr;
+        double *ptr = nullptr;
 
     public:
         /**
@@ -228,6 +228,7 @@ public:
          * @returns pointer of iterator object
          */
         double *get_ptr();
+        
     };
 
     // where do these go

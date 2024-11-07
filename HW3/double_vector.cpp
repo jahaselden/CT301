@@ -107,14 +107,18 @@ bool double_vector::empty()
     return size_ == 0 ? true : false;
 }
 
-// void double_vector::reserve(size_t n)
-// {
-//     if (n > capacity_)
-// }
+void double_vector::reserve(size_t n)
+{
+    if (n > capacity_)
+    {
+        reallocate(n);
+    }
+}
 
-// void double_vector::shrink_to_fit()
-// {
-// }
+void double_vector::shrink_to_fit()
+{
+    reallocate(size_);
+}
 
 // ELEMENT ACCESS
 
@@ -149,6 +153,7 @@ double *double_vector::data()
 
 // double_vector::iterator double_vector::begin() const
 // {
+//     ptr = data_
 // }
 
 // double_vector::iterator double_vector::end() const
