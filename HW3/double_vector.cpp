@@ -147,14 +147,15 @@ double *double_vector::data()
     return data_;
 }
 
-// double_vector::iterator double_vector::begin() const
-// {
-//     ptr = data_
-// }
+double_vector::iterator double_vector::begin() const
+{
+    this->ptr = data_
+}
 
-// double_vector::iterator double_vector::end() const
-// {
-// }
+double_vector::iterator double_vector::end() const
+{
+    data_[size_];
+}
 
 // MODIFIERS
 void double_vector::reallocate(size_t n)
@@ -221,10 +222,8 @@ void double_vector::swap(double_vector &other)
 
 void double_vector::clear()
 {
-    for (size_t i = 0; i < size_; i++)
-    {
-        data_[i] = 0;
-    }
+    delete [] data_;
+    data_ = new double[capacity_];
     size_ = 0;
 }
 
