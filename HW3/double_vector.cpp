@@ -24,14 +24,22 @@ double_vector::double_vector(size_t capacity) : size_(0)
 
 double_vector::double_vector(const double_vector &rhs)
 {
-    *this = double_vector(rhs);
+    //*this = double_vector(rhs);
+    capacity_ = rhs.capacity_;
+    size_ = rhs.size_;
+    data_ = new double[capacity_];
+    for (size_t i = 0; i < capacity_; i++)
+    {
+        data_[i] = rhs.data_[i];
+    }
 }
 
 double_vector &double_vector::operator=(const double_vector &rhs)
 {
-    this->capacity_ = rhs.capacity_;
-    this->size_ = rhs.size_;
-    this->data_ = new double[capacity_];
+    capacity_ = rhs.capacity_;
+    size_ = rhs.size_;
+    delete[] data_;
+    data_ = new double[capacity_];
     for (size_t i = 0; i < capacity_; i++)
     {
         data_[i] = rhs.data_[i];
@@ -49,7 +57,7 @@ double_vector::~double_vector()
 
 size_t double_vector::size()
 {
-    return size_;
+    return this->size_;
 }
 
 size_t double_vector::max_size()
@@ -59,7 +67,7 @@ size_t double_vector::max_size()
 
 size_t double_vector::capacity()
 {
-    return capacity_;
+    return this->capacity_;
 }
 
 void double_vector::resize(size_t n)
@@ -208,7 +216,7 @@ void double_vector::push_back(const double &val)
 
     if (capacity_ == 0)
     {
-        reallocate(0);
+        reallocate(1);
     }
 
     data_[size_] = val;
@@ -217,8 +225,8 @@ void double_vector::push_back(const double &val)
 
 void double_vector::pop_back()
 {
-    data_[size_] = 0;
-    --size_;
+    data_[this->size_] = 0;
+    --this->size_;
 }
 
 void double_vector::swap(double_vector &other)

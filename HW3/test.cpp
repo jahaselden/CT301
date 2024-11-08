@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
         cout << v[i] << ' ';
     }
     cout << endl;
-    cout << "\nAttemtping Copy Constructor\nCopy: ";
+    cout << "\nAttempting Copy Constructor\nCopy: ";
     double_vector cp(d2);
     cp.front() = 18;
     for (size_t i = 0; i < cp.size(); ++i){

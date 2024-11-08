@@ -10,9 +10,5 @@ using namespace std;
  */
 int main(int argc, char *argv[])
 {
-    cout << sizeof(size_t) << endl;
-    cout << sizeof(int) << endl;
-    size_t test = 1;
-    int tested = static_cast<int>(test);
-    cout << sizeof(test);
+    
 }
