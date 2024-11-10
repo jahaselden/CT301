@@ -8,27 +8,27 @@ using namespace std;
 double_vector::double_vector() : double_vector(0) {}
 double_vector::double_vector(size_t capacity) : size_(0)
 {
-    if (capacity > max_size())
+    if (this->capacity > max_size())
     {
-        capacity_ = max_size();
+        this->capacity_ = max_size();
     }
     else
     {
-        capacity_ = capacity;
+        this->capacity_ = capacity;
     }
-    if (capacity_ != 0) // data_ will stay a nullptr otherwise
+    if (this->capacity_ != 0) // data_ will stay a nullptr otherwise
     {
-        data_ = new double[capacity_];
+        this->data_ = new double[this->capacity_];
     }
 }
 
 double_vector::double_vector(const double_vector &rhs)
 {
     //*this = double_vector(rhs);
-    capacity_ = rhs.capacity_;
-    size_ = rhs.size_;
-    data_ = new double[capacity_];
-    for (size_t i = 0; i < capacity_; i++)
+    this->capacity_ = rhs.capacity_;
+    this->size_ = rhs.size_;
+    this->data_ = new double[this->capacity_];
+    for (size_t i = 0; i < this->capacity_; i++)
     {
         data_[i] = rhs.data_[i];
     }
@@ -36,11 +36,11 @@ double_vector::double_vector(const double_vector &rhs)
 
 double_vector &double_vector::operator=(const double_vector &rhs)
 {
-    capacity_ = rhs.capacity_;
-    size_ = rhs.size_;
-    delete[] data_;
-    data_ = new double[capacity_];
-    for (size_t i = 0; i < capacity_; i++)
+    this->capacity_ = rhs.capacity_;
+    this->size_ = rhs.size_;
+    delete[] this->data_;
+    this->data_ = new double[this->capacity_];
+    for (size_t i = 0; i < this->capacity_; i++)
     {
         data_[i] = rhs.data_[i];
     }
@@ -49,15 +49,15 @@ double_vector &double_vector::operator=(const double_vector &rhs)
 
 double_vector::~double_vector()
 {
-    delete[] data_;
-    data_ = nullptr;
+    delete[] this->data_;
+    this->data_ = nullptr;
 }
 
 // CAPACITY METHODS
 
 size_t double_vector::size()
 {
-    return size_;
+    return this->size_;
 }
 
 size_t double_vector::max_size()
@@ -67,7 +67,7 @@ size_t double_vector::max_size()
 
 size_t double_vector::capacity()
 {
-    return capacity_;
+    return this->capacity_;
 }
 
 void double_vector::resize(size_t n)
@@ -80,36 +80,36 @@ void double_vector::resize(size_t n, double val)
     double *new_data = new double[n];
 
     // if n is smaller than old data's size, only copy n values into new array
-    if (n < size_)
+    if (n < this->size_)
     {
         for (size_t i = 0; i < n; ++i)
         {
-            new_data[i] = data_[i];
+            new_data[i] = this->data_[i];
         }
     }
     else // n is greater than size_
     {
         // copy old data to new data up to size
-        for (size_t i = 0; i < size_; ++i)
+        for (size_t i = 0; i < this->size_; ++i)
         {
-            new_data[i] = data_[i];
+            new_data[i] = this->data_[i];
         }
         // set new data beyond the size to be 0 (up to capacity)
-        for (size_t i = size_; i < n; ++i)
+        for (size_t i = this->size_; i < n; ++i)
         {
             new_data[i] = val;
         }
     }
 
-    capacity_ = n;
+    this->capacity_ = n;
     delete[] data_;
-    data_ = new_data;
+    this->data_ = new_data;
     new_data = nullptr;
 }
 
 bool double_vector::empty()
 {
-    return size_ == 0 ? true : false;
+    return this->size_ == 0 ? true : false;
 }
 
 void double_vector::reserve(size_t n)
@@ -122,14 +122,14 @@ void double_vector::reserve(size_t n)
 
 void double_vector::shrink_to_fit()
 {
-    reallocate(size_);
+    reallocate(this->size_);
 }
 
 // ELEMENT ACCESS
 
 double &double_vector::operator[](size_t n)
 {
-    return data_[n];
+    return this->data_[n];
 }
 
 double &double_vector::at(size_t n)
@@ -138,22 +138,22 @@ double &double_vector::at(size_t n)
     {
         throw std::range_error("Index out of range");
     }
-    return data_[n];
+    return this->data_[n];
 }
 
 double &double_vector::front()
 {
-    return data_[0];
+    return this->data_[0];
 }
 
 double &double_vector::back()
 {
-    return data_[size_];
+    return this->data_[size_];
 }
 
 double *double_vector::data()
 {
-    return data_;
+    return this->data_;
 }
 
 double_vector::iterator double_vector::begin() const
@@ -179,7 +179,7 @@ void double_vector::reallocate(size_t n)
         n = max_size();
     }
 
-    capacity_ = n;
+    this->capacity_ = n;
     double *new_data;
 
     if (capacity_ == 0)
@@ -188,42 +188,42 @@ void double_vector::reallocate(size_t n)
     }
     else
     {
-        new_data = new double[capacity_];
+        new_data = new double[this->capacity_];
     }
 
-    int values = capacity_ < size_ ? capacity_ : size_;
+    int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
     // if n is smaller than old data's size, only copy n values into new array
     for (int i = 0; i < values; ++i)
     {
-        new_data[i] = data_[i];
+        new_data[i] = this->data_[i];
     }
 
-    delete[] data_;
-    data_ = new_data;
+    delete[] this->data_;
+    this->data_ = new_data;
     new_data = nullptr;
 }
 
 void double_vector::push_back(const double &val)
 {
     // if at capacity, double the vector size
-    if (size_ == capacity_)
+    if (this->size_ == this->capacity_)
     {
-        reallocate(capacity_ * 2);
+        reallocate(this->capacity_ * 2);
     }
 
-    if (capacity_ == 0)
+    if (this->capacity_ == 0)
     {
         reallocate(1);
     }
 
-    data_[size_] = val;
+    this->data_[size_] = val;
     ++size_;
 }
 
 void double_vector::pop_back()
 {
-    data_[size_] = 0;
-    --size_;
+    this->data_[size_] = 0;
+    --this->size_;
 }
 
 void double_vector::swap(double_vector &other)
@@ -236,9 +236,9 @@ void double_vector::swap(double_vector &other)
 
 void double_vector::clear()
 {
-    delete[] data_;
-    data_ = new double[capacity_];
-    size_ = 0;
+    delete[] this->data_;
+    this->data_ = new double[this->capacity_];
+    this->size_ = 0;
 }
 
 // ITERATOR SUBCLASS
