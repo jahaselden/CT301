@@ -77,35 +77,29 @@ void double_vector::resize(size_t n)
 
 void double_vector::resize(size_t n, double val)
 {
-    double *new_data = new double[n];
-
-    // if n is smaller than old data's size, only copy n values into new array
+    // if n is smaller than old data's size
     if (n < this->size_)
     {
-        for (size_t i = 0; i < n; ++i)
+        // set all values n through size to 0
+
+        for (size_t i = n; i < size_; ++i)
         {
-            new_data[i] = this->data_[i];
+            this->data_[i] = val;
         }
     }
-
-    if (n > this->size_)
+    if (n > this->size_ && n < this->capacity_)
     {
-        for (size_t i = 0; i < this->size_; ++i)
-        {
-            new_data[i] = this->data_[i];
-        }
-        // set new data beyond the size to be 0
         for (size_t i = this->size_; i < n; ++i)
         {
-            new_data[i] = val;
+            this->data_[i] = val;
         }
-        this->size_ = n;
+    }
+    if (n > this->capacity_)
+    {
+        reallocate(n);
     }
 
-    this->capacity_ = n;
-    delete[] this->data_;
-    this->data_ = new_data;
-    new_data = nullptr;
+    this->size_ = n;
 }
 
 bool double_vector::empty()
@@ -136,7 +130,7 @@ double &double_vector::operator[](size_t n)
 double &double_vector::at(size_t n)
 {
     // size_t cannot be negative
-    if (n > this->size_)
+    if (n >= this->size_)
     {
         throw std::range_error("Index out of range");
     }
@@ -192,7 +186,6 @@ void double_vector::reallocate(size_t n)
         new_data = new double[this->capacity_];
     }
 
-    // int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
     //  if n is smaller than old data's size, only copy n values into new array
     if (n < this->size_)
     {
