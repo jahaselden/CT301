@@ -8,7 +8,7 @@ using namespace std;
 double_vector::double_vector() : double_vector(0) {}
 double_vector::double_vector(size_t capacity) : size_(0)
 {
-    if (this->capacity > max_size())
+    if (capacity > max_size())
     {
         this->capacity_ = max_size();
     }
@@ -30,7 +30,7 @@ double_vector::double_vector(const double_vector &rhs)
     this->data_ = new double[this->capacity_];
     for (size_t i = 0; i < this->capacity_; i++)
     {
-        data_[i] = rhs.data_[i];
+        this->data_[i] = rhs.data_[i];
     }
 }
 
@@ -42,7 +42,7 @@ double_vector &double_vector::operator=(const double_vector &rhs)
     this->data_ = new double[this->capacity_];
     for (size_t i = 0; i < this->capacity_; i++)
     {
-        data_[i] = rhs.data_[i];
+        this->data_[i] = rhs.data_[i];
     }
     return *this;
 }
@@ -102,7 +102,7 @@ void double_vector::resize(size_t n, double val)
     }
 
     this->capacity_ = n;
-    delete[] data_;
+    delete[] this->data_;
     this->data_ = new_data;
     new_data = nullptr;
 }
@@ -114,7 +114,7 @@ bool double_vector::empty()
 
 void double_vector::reserve(size_t n)
 {
-    if (n > capacity_)
+    if (n > this->capacity_)
     {
         reallocate(n);
     }
@@ -182,7 +182,7 @@ void double_vector::reallocate(size_t n)
     this->capacity_ = n;
     double *new_data;
 
-    if (capacity_ == 0)
+    if (this->capacity_ == 0)
     {
         new_data = nullptr;
     }
@@ -191,9 +191,14 @@ void double_vector::reallocate(size_t n)
         new_data = new double[this->capacity_];
     }
 
-    int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
+    //int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
     // if n is smaller than old data's size, only copy n values into new array
-    for (int i = 0; i < values; ++i)
+    if (n < this->size_){
+        // lesser size, size_ needs update
+        this->size_ = n;
+    }
+
+    for (size_t i = 0; i < n; ++i)
     {
         new_data[i] = this->data_[i];
     }
