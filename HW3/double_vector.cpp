@@ -181,7 +181,6 @@ void double_vector::reallocate(size_t n)
 
     this->capacity_ = n;
     double *new_data;
-
     if (this->capacity_ == 0)
     {
         new_data = nullptr;
@@ -191,19 +190,19 @@ void double_vector::reallocate(size_t n)
         new_data = new double[this->capacity_];
     }
 
-    //int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
-    // if n is smaller than old data's size, only copy n values into new array
-    if (n < this->size_){
+    // int values = this->capacity_ < this->size_ ? this->capacity_ : this->size_;
+    //  if n is smaller than old data's size, only copy n values into new array
+    if (n < this->size_)
+    {
         // lesser size, size_ needs update
         this->size_ = n;
     }
 
-    for (size_t i = 0; i < n; ++i)
+    for (size_t i = 0; i < this->size_; ++i)
     {
         new_data[i] = this->data_[i];
     }
-
-    delete[] this->data_;
+    delete[] data_;
     this->data_ = new_data;
     new_data = nullptr;
 }
@@ -215,14 +214,13 @@ void double_vector::push_back(const double &val)
     {
         reallocate(this->capacity_ * 2);
     }
-
+    
     if (this->capacity_ == 0)
     {
         reallocate(1);
     }
-
-    this->data_[size_] = val;
-    ++size_;
+    this->data_[this->size_] = val;
+    ++this->size_;
 }
 
 void double_vector::pop_back()
