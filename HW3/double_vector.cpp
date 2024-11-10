@@ -57,7 +57,7 @@ double_vector::~double_vector()
 
 size_t double_vector::size()
 {
-    return this->size_;
+    return size_;
 }
 
 size_t double_vector::max_size()
@@ -67,7 +67,7 @@ size_t double_vector::max_size()
 
 size_t double_vector::capacity()
 {
-    return this->capacity_;
+    return capacity_;
 }
 
 void double_vector::resize(size_t n)
@@ -166,11 +166,8 @@ double_vector::iterator double_vector::begin() const
 double_vector::iterator double_vector::end() const
 {
     double_vector::iterator end;
-    // size_t is 8 bytes, iterate through using ints to get to last element
-    for (size_t i = 0; i < size_; i++)
-    {
-        ++end.ptr;
-    }
+    end.ptr = this->data_;
+    end.ptr += this->size_;
     return end;
 }
 
@@ -225,8 +222,8 @@ void double_vector::push_back(const double &val)
 
 void double_vector::pop_back()
 {
-    data_[this->size_] = 0;
-    --this->size_;
+    data_[size_] = 0;
+    --size_;
 }
 
 void double_vector::swap(double_vector &other)
@@ -279,18 +276,24 @@ double &double_vector::iterator::operator*()
 
 bool double_vector::iterator::operator==(const iterator &other) const
 {
-    if (&ptr == &other.ptr)
+    if (this->ptr == other.ptr)
     {
         return true;
     }
-    return false;
+    else
+    {
+        return false;
+    }
 }
 
 bool double_vector::iterator::operator!=(const iterator &other) const
 {
-    if (&ptr != &other.ptr)
+    if (this->ptr != other.ptr)
     {
         return true;
     }
-    return false;
+    else
+    {
+        return false;
+    }
 }

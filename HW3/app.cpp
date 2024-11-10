@@ -10,5 +10,5 @@ using namespace std;
  */
 int main(int argc, char *argv[])
 {
-    
+    // input format: ./app [-hcif] [optional_file] [remaining command line entries]
 }

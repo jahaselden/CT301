@@ -78,37 +78,38 @@ int main(int argc, char const *argv[])
     dv.resize(5,3.14);
     v_swap.resize(5,3.14);
     cout << "\nTesting Swap\nBefore Swap:\n";
-    cout << "d2 Cap: " << d2.capacity() << " Size: " << d2.size() << "\nd2 Elements: ";
+    cout << "d2 Capacity: " << d2.capacity() << " Size: " << d2.size() << "\nd2 Elements: ";
     for (size_t  i = 0; i < d2.size(); ++i)
         cout << d2[i] << " ";
-    cout << "\ndv Cap: " << dv.capacity() << " Size: " << dv.size() << "\ndv Elements: ";
+    cout << "\n dv Capacity: " << dv.capacity() << " Size: " << dv.size() << "\ndv Elements: ";
     for (size_t  i = 0; i < dv.size(); ++i)
         cout << dv[i] << " ";
     dv.swap(d2);
     cout << "\nAfter Swap\n";
-    cout << "d2 Cap: " << d2.capacity() << " Size: " << d2.size() << "\nd2 Elements: ";
+    cout << "d2 Capacity: " << d2.capacity() << " Size: " << d2.size() << "\nd2 Elements: ";
     for (size_t  i = 0; i < d2.size(); ++i)
         cout << d2[i] << " ";
-    cout << "\ndv Cap: " << dv.capacity() << " Size: " << dv.size() << "\ndv Elements: ";
+    cout << "\n dv Capacity: " << dv.capacity() << " Size: " << dv.size() << "\ndv Elements: ";
     for (size_t  i = 0; i < dv.size(); ++i)
         cout << dv[i] << " ";
     cout << "\n\n";
     cout << "\nTesting Vector Swap\nBefore Swap:\n";
-    cout << "v Cap: " << v.capacity() << " Size: " << v.size() << "\nv Elements: ";
+    cout << "v Capacity: " << v.capacity() << " Size: " << v.size() << "\nv Elements: ";
     for (size_t  i = 0; i < v.size(); ++i)
         cout << v[i] << " ";
-    cout << "\nv_swap Cap: " << v_swap.capacity() << " Size: " << v_swap.size() << "\nv_swap Elements: ";
+    cout << "\nv_swap Capacity: " << v_swap.capacity() << " Size: " << v_swap.size() << "\nv_swap Elements: ";
     for (size_t  i = 0; i < v_swap.size(); ++i)
         cout << v_swap[i] << " ";
     v_swap.swap(v);
     cout << "\nAfter Swap\n";
-    cout << "v Cap: " << v.capacity() << " Size: " << v.size() << "\nd2 Elements: ";
+    cout << "v Capacity: " << v.capacity() << " Size: " << v.size() << "\nd2 Elements: ";
     for (size_t  i = 0; i < v.size(); ++i)
         cout << v[i] << " ";
     cout << "\nv_swap Cap: " << v_swap.capacity() << " Size: " << v_swap.size() << "\nv_swap Elements: ";
     for (size_t  i = 0; i < v_swap.size(); ++i)
         cout << v_swap[i] << " ";
     cout << "\n\n";
+    
     cout << "Testing Iterator\n";
     for (double_vector::iterator iter = d2.begin(); iter != d2.end(); ++iter){
         cout << *iter << " ";
