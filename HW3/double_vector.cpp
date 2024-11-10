@@ -87,18 +87,19 @@ void double_vector::resize(size_t n, double val)
             new_data[i] = this->data_[i];
         }
     }
-    else // n is greater than size_
+
+    if (n > this->size_)
     {
-        // copy old data to new data up to size
         for (size_t i = 0; i < this->size_; ++i)
         {
             new_data[i] = this->data_[i];
         }
-        // set new data beyond the size to be 0 (up to capacity)
+        // set new data beyond the size to be 0
         for (size_t i = this->size_; i < n; ++i)
         {
             new_data[i] = val;
         }
+        this->size_ = n;
     }
 
     this->capacity_ = n;
@@ -134,7 +135,8 @@ double &double_vector::operator[](size_t n)
 
 double &double_vector::at(size_t n)
 {
-    if (n > size_)
+    // size_t cannot be negative
+    if (n > this->size_)
     {
         throw std::range_error("Index out of range");
     }
@@ -214,7 +216,7 @@ void double_vector::push_back(const double &val)
     {
         reallocate(this->capacity_ * 2);
     }
-    
+
     if (this->capacity_ == 0)
     {
         reallocate(1);
@@ -234,7 +236,6 @@ void double_vector::swap(double_vector &other)
     double_vector temp = other;
     other = *this;
     *this = temp;
-    // do i need to delete temp?
 }
 
 void double_vector::clear()

@@ -21,6 +21,12 @@ int main(int argc, char *argv[])
     string file_open = "Error! Could not open file";
 
     string incorrect_flag = "Please input a flag type listed below";
+
+    string data = "Data :";
+    string avg = "Average: ";
+    string max = "Maximum: ";
+    string min = "Minimum: ";
+    
     // input format: ./app [-hcif] [optional_file] [remaining command line entries]
 
     //switch statement for argv[1] (flag type)
