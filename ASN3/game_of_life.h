@@ -8,50 +8,66 @@ namespace GOL
   class GameOfLife
   {
     /***
-     * int width_, this integer stores the value for the width of the game table
+     * @brief int width_, this integer stores the value for the width of the game table
      */
     int width_;
 
     /**
-     * int height_, this integer stores the value for the height of the game table
+     * @brief int height_, this integer stores the value for the height of the game table
      */
     int height_;
 
     /**
-     * generations_, the counter of generations of the game
+     * @brief generations_, the counter of generations of the game
      */
     int generations_ = 0;
 
     /**
-     * dead_cell, the char representing dead cells in the game table
+     * @brief dead_cell, the char representing dead cells in the game table
      */
     char dead_cell = '-';
 
     /**
-     * live_cell, the char representing the live cells in the game table
+     * @brief live_cell, the char representing the live cells in the game table
      */
     char live_cell = '*';
 
     /**
-     * current_, the current game of life as a string
+     * @brief current_, the current game of life as a string
      */
     std::string current_;
 
     /**
-     * living_cells, the running total of living_cells in current game
+     * @brief living_cells, the running total of living_cells in current game
      */
     int living_cells = 0;
 
     /**
-     * next_living_cells, the running total of living cells in next gen of game
+     * @brief next_living_cells, the running total of living cells in next gen of game
      */
     int next_living_cells = 0;
+
+    /**
+     * @brief saved_game, the state of data relating to previous generations
+     */
+    struct saved_game
+    {
+      std::string game_board;
+      char live;
+      char dead;
+    };
+
+    /**
+     * @brief prev_games, stores previous generations
+     */
+    saved_game prev_games[100];
 
   public:
     /**
      * Destructor
+     * @brief Cleans up all memory allocations.;
      */
-    GameOfLife() = delete;
+    ~GameOfLife() = default;
 
     /**
      * Assignment Operator
@@ -226,31 +242,66 @@ namespace GOL
      * @returns the value of living cells as a percent of all cells
      */
     double GetPercentLiving() const;
+    
+    //TODO
+    std::string GenWindow(int row,int col,int height,int width);
 
-    // TODO: IMPLEMENT THESE - i don't think need to be declared outside of the class?
     /**
-     * creates a copy of the game and calculates what the game would look like in int N generations and returns that copy
+     * @brief creates a copy of the game and calculates what the game would look like in int N generations and returns that copy
      * @param int to determine number of generations
      */
     GameOfLife operator+(int) const;
 
     /**
-     * calculates the Next int N generations for the current game of life and returns itself
+     * @brief calculates the Next int N generations for the current game of life and returns itself
      * @param int to determine number of generations
      */
     GameOfLife &operator+=(int);
 
     /**
-     * calculates the next generation and then returns itself
+     * @brief calculates the next generation and then returns itself
      */
     GameOfLife &operator++();
 
     /**
-     * calculates the next generation but returns an instance of the game before incrementing
+     * @brief calculates the next generation but returns an instance of the game before incrementing
      */
     GameOfLife operator++(int);
 
-    // END TODO
+    /**
+     * @brief 
+     */
+    GameOfLife& operator+=(int gens);
+
+    /**
+     * @brief 
+     */
+    GameOfLife& operator-=(int gens);
+
+    /**
+     * @brief 
+     */
+    GameOfLife operator+(int gens);
+
+    /**
+     * @brief 
+     */
+    GameOfLife operator-(int gens);
+
+    /**
+     * @brief 
+     */
+    GameOfLife& operator--();
+
+    /**
+     * @brief 
+     */
+    GameOfLife operator--(int);
+
+    /**
+     * @brief 
+     */
+    GameOfLife operator-();
 
     /**
      * == operator overload function
