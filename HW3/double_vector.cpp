@@ -6,16 +6,16 @@
 using namespace std;
 
 double_vector::double_vector() : double_vector(0) {}
-double_vector::double_vector(size_t capacity) : size_(0)
+double_vector::double_vector(size_t capacity)
 {
     if (capacity > max_size())
     {
-        this->capacity_ = max_size();
+        capacity = max_size();
     }
-    else
-    {
-        this->capacity_ = capacity;
-    }
+    
+    this->size_ = capacity;
+    this->capacity_ = capacity;
+
     if (this->capacity_ != 0) // data_ will stay a nullptr otherwise
     {
         this->data_ = new double[this->capacity_];

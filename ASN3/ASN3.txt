@@ -1,0 +1,1374 @@
+
+Grade & Comments for ASN2.grades
+-------------------------
+  ASN2 Grade: 34.5 / 36
+  
+  test_live_dead_constr Score:     0 / 1.5   
+  compile_constructor_errors Score:   0.5 / 0.5   ✔✔✔
+  compile_equals       Score:   0.5 / 0.5   ✔✔✔
+  compile_file_only_constr Score:   0.5 / 0.5   ✔✔✔
+  compile_full_constr  Score:   0.5 / 0.5   ✔✔✔
+  compile_less_equals  Score:   0.5 / 0.5   ✔✔✔
+  compile_less_than    Score:   0.5 / 0.5   ✔✔✔
+  compile_live_dead_constr Score:   0.5 / 0.5   ✔✔✔
+  compile_nextN        Score:   0.5 / 0.5   ✔✔✔
+  compile_plus_equals  Score:   0.5 / 0.5   ✔✔✔
+  compile_plus         Score:   0.5 / 0.5   ✔✔✔
+  compile_post_increment Score:   0.5 / 0.5   ✔✔✔
+  compile_pre_gens_constr Score:   0.5 / 0.5   ✔✔✔
+  compile_pre_increment Score:   0.5 / 0.5   ✔✔✔
+  compile_set_cell_errors Score:   0.5 / 0.5   ✔✔✔
+  compile_set_dead     Score:   0.5 / 0.5   ✔✔✔
+  compile_set_live     Score:   0.5 / 0.5   ✔✔✔
+  compile_tall         Score:   0.5 / 0.5   ✔✔✔
+  compile_wide         Score:   0.5 / 0.5   ✔✔✔
+  test_constructor_errors Score:   1.5 / 1.5   ✔✔✔
+  test_equals          Score:   1.5 / 1.5   ✔✔✔
+  test_file_only_constr Score:   1.5 / 1.5   ✔✔✔
+  test_full_constr     Score:   1.5 / 1.5   ✔✔✔
+  test_less_equals     Score:   1.5 / 1.5   ✔✔✔
+  test_less_than       Score:   1.5 / 1.5   ✔✔✔
+  test_nextN           Score:   1.5 / 1.5   ✔✔✔
+  test_plus_equals     Score:   1.5 / 1.5   ✔✔✔
+  test_plus            Score:   1.5 / 1.5   ✔✔✔
+  test_post_increment  Score:   1.5 / 1.5   ✔✔✔
+  test_pre_gens_constr Score:   1.5 / 1.5   ✔✔✔
+  test_pre_increment   Score:   1.5 / 1.5   ✔✔✔
+  test_set_cell_errors Score:   1.5 / 1.5   ✔✔✔
+  test_set_dead        Score:   1.5 / 1.5   ✔✔✔
+  test_set_live        Score:   1.5 / 1.5   ✔✔✔
+  test_tall            Score:   1.5 / 1.5   ✔✔✔
+  test_wide            Score:   1.5 / 1.5   ✔✔✔
+  ---------------------------------------
+  GRADING DETAILS
+  
+  grading based on file: ASN2.tar
+  
+  game_of_life.cpp
+  test.cpp
+  Makefile
+  game_of_life.h
+  --------------------------------------------------------
+  
+  TEST: compile_file_only_constr CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_file_only_constr simple_file_constr.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_file_only_constr simple_file_constr.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_file_only_constr Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_file_only_constr CMD LINE: runner --maxreal 60 ./test_file_only_constr
+  
+  The cmd line is: runner --maxreal 60 ./test_file_only_constr
+  
+  File: input/gamestarter.txt
+  5 5
+  -----
+  -----
+  -----
+  -----
+  *--**
+  
+  Your Output/Master Output:
+  
+  [1;32mGame after File Only Construction:                                                                      Game after File Only Construction:[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m*--**                                                                                                   *--**[0;0m
+  
+  test_file_only_constr Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_live_dead_constr CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_live_dead_constr live_dead_constr.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_live_dead_constr live_dead_constr.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_live_dead_constr Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_live_dead_constr CMD LINE: runner --maxreal 60 ./test_live_dead_constr
+  
+  The cmd line is: runner --maxreal 60 ./test_live_dead_constr
+  
+  File: input/gamestarter.txt
+  5 5
+  -----
+  -----
+  -----
+  -----
+  *--**
+  
+  Your Output/Master Output:
+  
+  [1;32mGame using Live Dead Cell Construction:                                                           [1;34m  [1;32m    Game using Live Dead Cell Construction:[0;0m
+  [1;32mGeneration: 0                                                                                     [1;34m  [1;32m    Generation: 0[0;0m
+  [1;31m-----                                                                                             [1;34m |[1;32m    #####[0;0m
+  [1;31m-----                                                                                             [1;34m |[1;32m    #####[0;0m
+  [1;31m-----                                                                                             [1;34m |[1;32m    #####[0;0m
+  [1;31m-----                                                                                             [1;34m |[1;32m    #####[0;0m
+  [1;31m%--%%                                                                                             [1;34m |[1;32m    %##%%[0;0m
+  
+  test_live_dead_constr Score:     0 / 1.5   
+  --------------------------------------------------------
+  
+  TEST: compile_pre_gens_constr CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_pre_gens_constr pre_gens_constr.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_pre_gens_constr pre_gens_constr.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_pre_gens_constr Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_pre_gens_constr CMD LINE: runner --maxreal 60 ./test_pre_gens_constr
+  
+  The cmd line is: runner --maxreal 60 ./test_pre_gens_constr
+  
+  File: input/gamestarter.txt
+  5 5
+  -----
+  -----
+  -----
+  -----
+  *--**
+  
+  Your Output/Master Output:
+  
+  [1;32mGame using Pre-gens Construction:                                                                       Game using Pre-gens Construction:[0;0m
+  [1;32mGenerations: 20                                                                                         Generations: 20[0;0m
+  [1;32mGeneration: 20                                                                                          Generation: 20[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m*--**                                                                                                   *--**[0;0m
+  
+  test_pre_gens_constr Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_full_constr CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_full_constr full_constr.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_full_constr full_constr.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_full_constr  Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_full_constr CMD LINE: runner --maxreal 60 ./test_full_constr
+  
+  The cmd line is: runner --maxreal 60 ./test_full_constr
+  
+  File: input/gamestarter.txt
+  5 5
+  -----
+  -----
+  -----
+  -----
+  *--**
+  
+  Your Output/Master Output:
+  
+  [1;32mGame using All Inputs Construction:                                                                     Game using All Inputs Construction:[0;0m
+  [1;32mGeneration: 20                                                                                          Generation: 20[0;0m
+  [1;32mGeneration: 20                                                                                          Generation: 20[0;0m
+  [1;32m#####                                                                                                   #####[0;0m
+  [1;32m#####                                                                                                   #####[0;0m
+  [1;32m#####                                                                                                   #####[0;0m
+  [1;32m#####                                                                                                   #####[0;0m
+  [1;32m%##%%                                                                                                   %##%%[0;0m
+  
+  test_full_constr     Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_constructor_errors CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_constructor_errors constructor_errors.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_constructor_errors constructor_errors.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_constructor_errors Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_constructor_errors CMD LINE: runner --maxreal 60 ./test_constructor_errors
+  
+  The cmd line is: runner --maxreal 60 ./test_constructor_errors
+  
+  Your Output/Master Output:
+  
+  [1;32mCorrect Caught error, invalid width format                                                              Correct Caught error, invalid width format[0;0m
+  [1;32mCorrect Caught error, invalid height format                                                             Correct Caught error, invalid height format[0;0m
+  [1;32mCorrect Caught error, Duplicate Character Error                                                         Correct Caught error, Duplicate Character Error[0;0m
+  
+  test_constructor_errors Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_nextN CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_nextN NextN.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_nextN NextN.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_nextN        Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_nextN CMD LINE: runner --maxreal 60 ./test_nextN
+  
+  The cmd line is: runner --maxreal 60 ./test_nextN
+  
+  File: input/party.txt
+  14 14
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  --------------
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mPre Next N: 0                                                                                           Pre Next N: 0[0;0m
+  [1;32mPost Next N Expected: 7                                                                                 Post Next N Expected: 7[0;0m
+  [1;32mRecieved: 7                                                                                             Recieved: 7[0;0m
+  
+  test_nextN           Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_set_live CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_live live_cell.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_live live_cell.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_set_live     Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_set_live CMD LINE: runner --maxreal 60 ./test_set_live
+  
+  The cmd line is: runner --maxreal 60 ./test_set_live
+  
+  File: input/party.txt
+  14 14
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  --------------
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mGame Before Changing Live Cell                                                                          Game Before Changing Live Cell[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32mAfter Changing Live cell to '^'Generation: 0                                                            After Changing Live cell to '^'Generation: 0[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m-^^-^^-^^-^^--                                                                                          -^^-^^-^^-^^--[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m-^^-^^-^^-^^--                                                                                          -^^-^^-^^-^^--[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m-^^-^^-^^-^^--                                                                                          -^^-^^-^^-^^--[0;0m
+  [1;32m---^-----^----                                                                                          ---^-----^----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m[0;0m
+  
+  test_set_live        Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_set_dead CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_dead dead_cell.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_dead dead_cell.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_set_dead     Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_set_dead CMD LINE: runner --maxreal 60 ./test_set_dead
+  
+  The cmd line is: runner --maxreal 60 ./test_set_dead
+  
+  File: input/party.txt
+  14 14
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  ---*-----*----
+  -**-**-**-**--
+  ---*-----*----
+  --------------
+  --------------
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mGame Before Changing Dead Cell                                                                          Game Before Changing Dead Cell[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m-**-**-**-**--                                                                                          -**-**-**-**--[0;0m
+  [1;32m---*-----*----                                                                                          ---*-----*----[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32m--------------                                                                                          --------------[0;0m
+  [1;32mAfter Changing Dead cell to '<'Generation: 0                                                            After Changing Dead cell to '<'Generation: 0[0;0m
+  [1;32m<<<<<<<<<<<<<<                                                                                          <<<<<<<<<<<<<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<**<**<**<**<<                                                                                          <**<**<**<**<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<<<<<<<<<<<<<<                                                                                          <<<<<<<<<<<<<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<**<**<**<**<<                                                                                          <**<**<**<**<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<<<<<<<<<<<<<<                                                                                          <<<<<<<<<<<<<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<**<**<**<**<<                                                                                          <**<**<**<**<<[0;0m
+  [1;32m<<<*<<<<<*<<<<                                                                                          <<<*<<<<<*<<<<[0;0m
+  [1;32m<<<<<<<<<<<<<<                                                                                          <<<<<<<<<<<<<<[0;0m
+  [1;32m<<<<<<<<<<<<<<                                                                                          <<<<<<<<<<<<<<[0;0m
+  [1;32m[0;0m
+  
+  test_set_dead        Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_set_cell_errors CMD LINE: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_cell_errors set_cell_errors.cpp ASN2.a
+  
+  The cmd line is: g++ -std=c++20 -Wall -Werror -Wfatal-errors -o test_set_cell_errors set_cell_errors.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_set_cell_errors Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_set_cell_errors CMD LINE: runner --maxreal 60 ./test_set_cell_errors
+  
+  The cmd line is: runner --maxreal 60 ./test_set_cell_errors
+  
+  Your Output/Master Output:
+  
+  [1;32mCorrect Caught error, Duplicate Character Error                                                         Correct Caught error, Duplicate Character Error[0;0m
+  [1;32mCorrect Caught error, Duplicate Character Error                                                         Correct Caught error, Duplicate Character Error[0;0m
+  
+  test_set_cell_errors Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_wide CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_wide wide_test.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_wide wide_test.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_wide         Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_wide CMD LINE: runner --maxreal 60 ./test_wide
+  
+  The cmd line is: runner --maxreal 60 ./test_wide
+  
+  File: input/corner_rave.txt
+  20 10
+  *------------------*
+  --------------------
+  ------*-------*-----
+  ------*-------*-----
+  ------*-------*-----
+  --------------------
+  ----*-------*-------
+  ----*-------*-------
+  ----*-------*-------
+  *------------------*
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mGeneration: 1                                                                                           Generation: 1[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----***-----***----                                                                                    -----***-----***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-----***------                                                                                    ---***-----***------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mGeneration: 2                                                                                           Generation: 2[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mGeneration: 3                                                                                           Generation: 3[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----***-----***----                                                                                    -----***-----***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-----***------                                                                                    ---***-----***------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mGeneration: 4                                                                                           Generation: 4[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m------*-------*-----                                                                                    ------*-------*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m----*-------*-------                                                                                    ----*-------*-------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mGeneration: 5                                                                                           Generation: 5[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----***-----***----                                                                                    -----***-----***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-----***------                                                                                    ---***-----***------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  
+  test_wide            Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_tall CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_tall tall_test.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_tall tall_test.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_tall         Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_tall CMD LINE: runner --maxreal 60 ./test_tall
+  
+  The cmd line is: runner --maxreal 60 ./test_tall
+  
+  File: input/glider_wall.txt
+  5 100
+  -----
+  ---*-
+  -*-*-
+  --**-
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  -----
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m---*-                                                                                                   ---*-[0;0m
+  [1;32m-*-*-                                                                                                   -*-*-[0;0m
+  [1;32m--**-                                                                                                   --**-[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m[0;0m
+  [1;32mGeneration: 36                                                                                          Generation: 36[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m--*--                                                                                                   --*--[0;0m
+  [1;32m*-*--                                                                                                   *-*--[0;0m
+  [1;32m-**--                                                                                                   -**--[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m-----                                                                                                   -----[0;0m
+  [1;32m[0;0m
+  
+  test_tall            Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_plus_equals CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_plus_equals plus_equals.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_plus_equals plus_equals.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_plus_equals  Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_plus_equals CMD LINE: runner --maxreal 60 ./test_plus_equals
+  
+  The cmd line is: runner --maxreal 60 ./test_plus_equals
+  
+  File: input/test.txt
+  20 20
+  *------------------*
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --------------------
+  *------------------*
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mBefore Plus Equals with n = 2                                                                           Before Plus Equals with n = 2[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mCalling Plus Equals Inline n = 2                                                                        Calling Plus Equals Inline n = 2[0;0m
+  [1;32mGeneration: 2                                                                                           Generation: 2[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mAfter Increment n=2                                                                                     After Increment n=2[0;0m
+  [1;32mGeneration: 2                                                                                           Generation: 2[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  
+  test_plus_equals     Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_pre_increment CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_pre_increment pre_increment.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_pre_increment pre_increment.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_pre_increment Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_pre_increment CMD LINE: runner --maxreal 60 ./test_pre_increment
+  
+  The cmd line is: runner --maxreal 60 ./test_pre_increment
+  
+  File: input/test.txt
+  20 20
+  *------------------*
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --------------------
+  *------------------*
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mBefore Increment                                                                                        Before Increment[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mCalling preincrement Inline                                                                             Calling preincrement Inline[0;0m
+  [1;32mGeneration: 1                                                                                           Generation: 1[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mAfter IncrementGeneration: 1                                                                            After IncrementGeneration: 1[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  
+  test_pre_increment   Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_post_increment CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_post_increment post_increment.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_post_increment post_increment.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_post_increment Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_post_increment CMD LINE: runner --maxreal 60 ./test_post_increment
+  
+  The cmd line is: runner --maxreal 60 ./test_post_increment
+  
+  File: input/test.txt
+  20 20
+  *------------------*
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --------------------
+  *------------------*
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mBefore Increment                                                                                        Before Increment[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mCalling preincrement Inline                                                                             Calling preincrement Inline[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--*---*---*---*-----                                                                                    --*---*---*---*-----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m----*---*---*---*---                                                                                    ----*---*---*---*---[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32mAfter IncrementGeneration: 1                                                                            After IncrementGeneration: 1[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-***-***-***-***----                                                                                    -***-***-***-***----[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m---***-***-***-***--                                                                                    ---***-***-***-***--[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m*------------------*                                                                                    *------------------*[0;0m
+  
+  test_post_increment  Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_plus CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_plus plus.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_plus plus.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_plus         Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_plus CMD LINE: runner --maxreal 60 ./test_plus
+  
+  The cmd line is: runner --maxreal 60 ./test_plus
+  
+  File: input/test.txt
+  20 20
+  *------------------*
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --*---*---*---*-----
+  --------------------
+  ----*---*---*---*---
+  ----*---*---*---*---
+  ----*---*---*---*---
+  --------------------
+  --------------------
+  *------------------*
+  
+  
+  Your Output/Master Output:
+  
+  [1;32mBefore Plus with n = 2                                                                                  Before Plus with n = 2[0;0m
+  [1;32mGeneration: 0                                                                                           Generation: 0[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----*-*------------                                                                                    -----*-*------------[0;0m
+  [1;32m----*---------------                                                                                    ----*---------------[0;0m
+  [1;32m-----*--*-----------                                                                                    -----*--*-----------[0;0m
+  [1;32m-------***----------                                                                                    -------***----------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32mOriginal game: Generation: 0                                                                            Original game: Generation: 0[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----*-*------------                                                                                    -----*-*------------[0;0m
+  [1;32m----*---------------                                                                                    ----*---------------[0;0m
+  [1;32m-----*--*-----------                                                                                    -----*--*-----------[0;0m
+  [1;32m-------***----------                                                                                    -------***----------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32mCopy of game after Increment n=2                                                                        Copy of game after Increment n=2[0;0m
+  [1;32mGeneration: 2                                                                                           Generation: 2[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-----*--------------                                                                                    -----*--------------[0;0m
+  [1;32m-----****-----------                                                                                    -----****-----------[0;0m
+  [1;32m-----*---*----------                                                                                    -----*---*----------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m-------***----------                                                                                    -------***----------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  [1;32m--------------------                                                                                    --------------------[0;0m
+  
+  test_plus            Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_less_than CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_less_than less_test.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_less_than less_test.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_less_than    Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_less_than CMD LINE: runner --maxreal 60 ./test_less_than
+  
+  The cmd line is: runner --maxreal 60 ./test_less_than
+  
+  File: input/less.txt
+  6 5
+  *--*--
+  ------
+  *----*
+  ------
+  -----*
+  
+  Your Output/Master Output:
+  
+  [1;32mfalse                                                                                                   false[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mfalse                                                                                                   false[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  
+  test_less_than       Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_equals CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_equals equals_test.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_equals equals_test.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_equals       Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_equals CMD LINE: runner --maxreal 60 ./test_equals
+  
+  The cmd line is: runner --maxreal 60 ./test_equals
+  
+  File: input/less.txt
+  6 5
+  *--*--
+  ------
+  *----*
+  ------
+  -----*
+  
+  Your Output/Master Output:
+  
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mfalse                                                                                                   false[0;0m
+  [1;32mfalse                                                                                                   false[0;0m
+  
+  test_equals          Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: compile_less_equals CMD LINE: g++ -Wall -Werror -Wfatal-errors -o test_less_equals less_equals_test.cpp ASN2.a
+  
+  The cmd line is: g++ -Wall -Werror -Wfatal-errors -o test_less_equals less_equals_test.cpp ASN2.a
+  
+  Your Output/Master Output:
+  
+  
+  compile_less_equals  Score:   0.5 / 0.5   ✔✔✔
+  --------------------------------------------------------
+  
+  TEST: test_less_equals CMD LINE: runner --maxreal 60 ./test_less_equals
+  
+  The cmd line is: runner --maxreal 60 ./test_less_equals
+  
+  File: input/less.txt
+  6 5
+  *--*--
+  ------
+  *----*
+  ------
+  -----*
+  
+  Your Output/Master Output:
+  
+  [1;32mComparing Self one generation apart                                                                     Comparing Self one generation apart[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mComparing Sub Games after 2 Generations                                                                 Comparing Sub Games after 2 Generations[0;0m
+  [1;32mfalse                                                                                                   false[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mComparing Sub games after 7 Generations                                                                 Comparing Sub games after 7 Generations[0;0m
+  [1;32mtrue                                                                                                    true[0;0m
+  [1;32mfalse                                                                                                   false[0;0m
+  
+  test_less_equals     Score:   1.5 / 1.5   ✔✔✔
+  --------------------------------------------------------
+
