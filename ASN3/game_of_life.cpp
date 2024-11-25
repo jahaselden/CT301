@@ -296,11 +296,11 @@ namespace GOL
         return prev_game_count;
     }
 
-    bool IsStillLife();
+    // bool IsStillLife(){}
 
     void GameOfLife::ToggleCell(int index)
     {
-        if (current_.at(index) == live_cell)
+        if (current_.at(index) == live_cell) // .at() throws range error
         {
             current_.at(index) = dead_cell;
             --living_cells;
