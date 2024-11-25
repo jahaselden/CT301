@@ -352,14 +352,15 @@ namespace GOL
 
     // GameOfLife GameOfLife::operator--(int){}
 
-    // GameOfLife GameOfLife::operator-(){}
-
-    // GameOfLife GameOfLife::operator+(int n) const
-    // {
-    //     GameOfLife copy = *this;
-    //     copy.NextNGen(n);
-    //     return copy;
-    // }
+    GameOfLife GameOfLife::operator-()
+    {
+        GameOfLife neg_game = *this;
+        for (size_t i = 0; i < neg_game.current_.length(); ++i)
+        {
+            neg_game.ToggleCell(static_cast<int>(i));
+        }
+        return neg_game;
+    }
 
     GameOfLife &GameOfLife::operator++()
     {
