@@ -111,12 +111,8 @@ namespace GOL
         {
             // document game to save in prev_games array
             saved_game curr_game = {current_, live_cell, dead_cell};
-            // cout << "current_ in SavePrevGen(): " << current_ << endl;
             prev_games[prev_game_count] = curr_game;
             ++prev_game_count;
-            // for (int i = 0; i < prev_game_count; ++i){
-            //     cout << prev_games[i].game_board << endl;
-            // }
         } else {
             cout << "Max generations stored, cannot store more generations" << endl;
         }
@@ -475,7 +471,6 @@ namespace GOL
     ostream &operator<<(ostream &os, const GameOfLife &game)
     {
         cout << "Generation: " << game.generations_ << endl;
-        //os << game.current_ << endl;
 
         for (size_t i = 0; i < game.current_.length() + 1; i++)
         {
