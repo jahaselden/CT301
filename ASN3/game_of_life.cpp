@@ -99,15 +99,22 @@ namespace GOL
 
     void GameOfLife::CompleteNextGen(string &next_gen_game)
     {
-        // document game to save in prev_games array
-        saved_game curr_game = {current_, live_cell, dead_cell};
-        prev_games[prev_game_count] = curr_game;
-
+        SavePrevGen();
         current_ = next_gen_game;
         ++generations_;
         living_cells = next_living_cells;
 
         ++prev_game_count;
+    }
+
+    void GameOfLife::SavePrevGen()
+    {
+        if (prev_game_count > 99)
+        {
+            // document game to save in prev_games array
+            saved_game curr_game = {current_, live_cell, dead_cell};
+            prev_games[prev_game_count] = curr_game;
+        }
     }
 
     void GameOfLife::NextNGen(int n)
@@ -350,7 +357,9 @@ namespace GOL
 
     // GameOfLife &GameOfLife::operator--() {}
 
-    // GameOfLife GameOfLife::operator--(int){}
+    GameOfLife GameOfLife::operator--(int)
+    {
+    }
 
     GameOfLife GameOfLife::operator-()
     {

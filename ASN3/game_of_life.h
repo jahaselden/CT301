@@ -198,6 +198,12 @@ namespace GOL
     void CompleteNextGen(std::string &next_gen_game);
 
     /**
+     * SavePrevGen
+     * @brief accounts for checking of max gens to store and adding prev gens as game continues
+     */
+    void SavePrevGen();
+
+    /**
      * NextNGen
      * @param n the number of times to run the NextGen() method, ignores n < 1
      */
