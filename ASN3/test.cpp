@@ -34,6 +34,15 @@ int main(int argc, char const *argv[])
     cout << endl << "Pre-decriment operator with -2: " << endl;
     cout << game - 2;
 
+    cout << endl << "Decriment equals operator +2: " << endl;
+    game += 2;
+    cout << game;
+
+    cout << endl << "Decriment equals operator -2: " << endl;
+    game += -2;
+    cout << game;
+
+
     //cout << "Previous gens should be 0: " << game_copy.GetAvailableGens() << endl;
 
     // GameOfLife game("starter_2.txt", 'l', '-');

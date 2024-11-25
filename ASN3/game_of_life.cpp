@@ -333,30 +333,35 @@ namespace GOL
     // {
     // }
 
-    // GameOfLife &GameOfLife::operator+=(int gens)
-    // {
-    //     if (gens > 0)
-    //     {
-    //         this->NextNGen(gens);
-    //         return *this;
-    //     }
-    //     else
-    //     {
-    //         return *this -= gens;
-    //     }
-    // }
+    GameOfLife &GameOfLife::operator+=(int gens)
+    {
+        if (gens > 0)
+        {
+            this->NextNGen(gens);
+            return *this;
+        }
+        else
+        {
+            return *this -= -gens;
+        }
+    }
 
-    // GameOfLife &GameOfLife::operator-=(int gens) {}
+    GameOfLife &GameOfLife::operator-=(int gens) {
+        for (int i = 0; i < gens; ++i){
+            --*this;
+        }
+        return *this;
+    }
 
-    // GameOfLife GameOfLife::operator+(int gens) {
-    //     if (gens > 0){
-    //         GameOfLife copy = *this;
-    //         copy.NextNGen(gens);
-    //         return copy;
-    //     }else {
-    //         return *this - gens;
-    //     }
-    // }
+    GameOfLife GameOfLife::operator+(int gens) {
+        if (gens > 0){
+            GameOfLife copy = *this;
+            copy.NextNGen(gens);
+            return copy;
+        }else {
+            return *this - gens;
+        }
+    }
 
     GameOfLife GameOfLife::operator-(int gens) {
         for (int i = 0; i < gens; ++i){
