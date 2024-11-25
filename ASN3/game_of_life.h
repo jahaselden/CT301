@@ -52,8 +52,19 @@ namespace GOL
      */
     struct saved_game
     {
+      /**
+       * game_board represents the string of a game
+       */
       std::string game_board;
+
+      /**
+       * live is the character representing live cells
+       */
       char live;
+
+      /**
+       * dead is the character representing dead cells 
+       */
       char dead;
     };
 
@@ -61,6 +72,11 @@ namespace GOL
      * @brief prev_games, stores previous generations
      */
     saved_game prev_games[100];
+
+    /**
+     * @brief prev_game_count, stores number of gens in array
+     */
+    int prev_game_count = 0;
 
   public:
     /**
@@ -242,21 +258,34 @@ namespace GOL
      * @returns the value of living cells as a percent of all cells
      */
     double GetPercentLiving() const;
-    
-    //TODO
-    std::string GenWindow(int row,int col,int height,int width);
 
     /**
-     * @brief creates a copy of the game and calculates what the game would look like in int N generations and returns that copy
-     * @param int to determine number of generations
+     * @returns the count of the available gens for rollback for the '-' operators
      */
-    GameOfLife operator+(int) const;
+    int GetAvailableGens();
 
     /**
-     * @brief calculates the Next int N generations for the current game of life and returns itself
-     * @param int to determine number of generations
+     * 
      */
-    GameOfLife &operator+=(int);
+    bool IsStillLife();
+
+    /**
+     * @brief sets a live_cell at the index to a dead_cell and vice versa
+     * @param index to toggle in current game
+     */
+    void ToggleCell(int index);
+
+    /**
+     * @brief sets a live_cell at the index to a dead_cell and vice versa
+     * @param row of index to toggle
+     * @param col of index to toggle
+     */
+    void ToggleCell(int row, int col);
+
+    /**
+     * 
+     */
+    std::string GenWindow(int row, int col, int height, int width);
 
     /**
      * @brief calculates the next generation and then returns itself
@@ -269,37 +298,39 @@ namespace GOL
     GameOfLife operator++(int);
 
     /**
-     * @brief 
+     * @brief calculates the Next int N generations for the current game of life and returns itself
+     * @param int to determine number of generations, accomodates negatives
      */
-    GameOfLife& operator+=(int gens);
+    GameOfLife &operator+=(int gens);
 
     /**
-     * @brief 
+     * @brief
      */
-    GameOfLife& operator-=(int gens);
+    GameOfLife &operator-=(int gens);
 
     /**
-     * @brief 
+     * @brief creates a copy of the game and calculates what the game would look like in int N generations and returns that copy
+     * @param int to determine number of generations, accomodates negatives
      */
     GameOfLife operator+(int gens);
 
     /**
-     * @brief 
+     * @brief
      */
     GameOfLife operator-(int gens);
 
     /**
-     * @brief 
+     * @brief
      */
-    GameOfLife& operator--();
+    GameOfLife &operator--();
 
     /**
-     * @brief 
+     * @brief
      */
     GameOfLife operator--(int);
 
     /**
-     * @brief 
+     * @brief
      */
     GameOfLife operator-();
 

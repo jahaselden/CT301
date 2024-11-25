@@ -89,12 +89,33 @@ namespace GOL
             // track living cells of next gen
             if (alive_in_next_gen)
             {
-                next_living_cells++;
+                ++next_living_cells;
             }
             SetCellState(alive_in_next_gen, i, next_gen);
         }
         // when all cells have been accounted for - move on to next round
         CompleteNextGen(next_gen);
+    }
+
+    void GameOfLife::CompleteNextGen(string &next_gen_game)
+    {
+        // document game to save in prev_games array
+        saved_game curr_game = {current_, live_cell, dead_cell};
+        prev_games[prev_game_count] = curr_game;
+
+        current_ = next_gen_game;
+        ++generations_;
+        living_cells = next_living_cells;
+
+        ++prev_game_count;
+    }
+
+    void GameOfLife::NextNGen(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            NextGen();
+        }
     }
 
     int GameOfLife::CheckLivingNeighbors(int cell_index)
@@ -155,25 +176,6 @@ namespace GOL
         return alive_in_next_gen;
     }
 
-    void GameOfLife::SetCellState(bool alive, size_t cell_index, string &next_gen_game)
-    {
-        if (alive)
-        {
-            next_gen_game[cell_index] = live_cell;
-        }
-        else
-        {
-            next_gen_game[cell_index] = dead_cell;
-        }
-    }
-
-    void GameOfLife::CompleteNextGen(string &next_gen_game)
-    {
-        current_ = next_gen_game;
-        generations_++;
-        living_cells = next_living_cells;
-    }
-
     bool GameOfLife::CheckCellState(size_t cell_index)
     {
         if (current_[cell_index] == live_cell)
@@ -186,52 +188,16 @@ namespace GOL
         }
     }
 
-    void GameOfLife::NextNGen(int n)
+    void GameOfLife::SetCellState(bool alive, size_t cell_index, string &next_gen_game)
     {
-        for (int i = 0; i < n; i++)
+        if (alive)
         {
-            NextGen();
+            next_gen_game[cell_index] = live_cell;
         }
-    }
-
-    int GameOfLife::Convert2DTo1D(int row, int col)
-    {
-        return (row * width_) + col;
-    }
-
-    int GameOfLife::Get2DCol(int index)
-    {
-        return index % width_;
-    }
-
-    int GameOfLife::GetLeftCol(int col)
-    {
-        return ((col - 1) + width_) % width_;
-    }
-
-    int GameOfLife::GetRightCol(int col)
-    {
-        return (col + 1) % width_;
-    }
-
-    int GameOfLife::Get2DRow(int index)
-    {
-        return index / width_;
-    }
-
-    int GameOfLife::GetUpperRow(int row)
-    {
-        return ((row - 1) + height_) % height_;
-    }
-
-    int GameOfLife::GetLowerRow(int row)
-    {
-        return (row + 1) % height_;
-    }
-
-    int GameOfLife::GetGenerations()
-    {
-        return generations_;
+        else
+        {
+            next_gen_game[cell_index] = dead_cell;
+        }
     }
 
     void GameOfLife::SetLiveCell(char new_char)
@@ -276,18 +242,124 @@ namespace GOL
         }
     }
 
-    GameOfLife GameOfLife::operator+(int n) const
+    int GameOfLife::Convert2DTo1D(int row, int col)
     {
-        GameOfLife copy = *this;
-        copy.NextNGen(n);
-        return copy;
+        return (row * width_) + col;
     }
 
-    GameOfLife &GameOfLife::operator+=(int n)
+    int GameOfLife::Get2DCol(int index)
     {
-        this->NextNGen(n);
-        return *this;
+        return index % width_;
     }
+
+    int GameOfLife::GetLeftCol(int col)
+    {
+        return ((col - 1) + width_) % width_;
+    }
+
+    int GameOfLife::GetRightCol(int col)
+    {
+        return (col + 1) % width_;
+    }
+
+    int GameOfLife::Get2DRow(int index)
+    {
+        return index / width_;
+    }
+
+    int GameOfLife::GetUpperRow(int row)
+    {
+        return ((row - 1) + height_) % height_;
+    }
+
+    int GameOfLife::GetLowerRow(int row)
+    {
+        return (row + 1) % height_;
+    }
+
+    int GameOfLife::GetGenerations()
+    {
+        return generations_;
+    }
+
+    double GameOfLife::GetPercentLiving() const
+    {
+        double total_cells = width_ * height_;
+        double percent_living = living_cells / total_cells;
+        return percent_living * 100;
+    }
+
+    // TODO
+
+    int GameOfLife::GetAvailableGens()
+    {
+        return prev_game_count;
+    }
+
+    bool IsStillLife();
+
+    void GameOfLife::ToggleCell(int index)
+    {
+        if (current_.at(index) == live_cell)
+        {
+            current_.at(index) = dead_cell;
+            --living_cells;
+        }
+        else
+        {
+            current_.at(index) = live_cell;
+            ++living_cells;
+        }
+    }
+
+    void GameOfLife::ToggleCell(int row, int col)
+    {
+        ToggleCell(Convert2DTo1D(row, col));
+    }
+
+    // string GameOfLife::GenWindow(int row, int col, int height, int width)
+    // {
+    // }
+
+    // GameOfLife &GameOfLife::operator+=(int gens)
+    // {
+    //     if (gens > 0)
+    //     {
+    //         this->NextNGen(gens);
+    //         return *this;
+    //     }
+    //     else
+    //     {
+    //         return *this -= gens;
+    //     }
+    // }
+
+    // GameOfLife &GameOfLife::operator-=(int gens) {}
+
+    // GameOfLife GameOfLife::operator+(int gens) {
+    //     if (gens > 0){
+    //         GameOfLife copy = *this;
+    //         copy.NextNGen(gens);
+    //         return copy;
+    //     }else {
+    //         return *this - gens;
+    //     }
+    // }
+
+    // GameOfLife GameOfLife::operator-(int gens) {}
+
+    // GameOfLife &GameOfLife::operator--() {}
+
+    // GameOfLife GameOfLife::operator--(int){}
+
+    // GameOfLife GameOfLife::operator-(){}
+
+    // GameOfLife GameOfLife::operator+(int n) const
+    // {
+    //     GameOfLife copy = *this;
+    //     copy.NextNGen(n);
+    //     return copy;
+    // }
 
     GameOfLife &GameOfLife::operator++()
     {
@@ -300,13 +372,6 @@ namespace GOL
         GameOfLife copy = *this;
         this->NextGen();
         return copy;
-    }
-
-    double GameOfLife::GetPercentLiving() const
-    {
-        double total_cells = width_ * height_;
-        double percent_living = living_cells / total_cells;
-        return percent_living * 100;
     }
 
     bool GameOfLife::operator<(const GameOfLife &other_game) const
