@@ -326,7 +326,8 @@ namespace GOL
     GameOfLife operator-(int gens);
 
     /**
-     * @brief
+     * @brief acts like decrementing the current game by 1 and returns the current game state AFTER the decrement
+     * @throws domain error if no gens available to roll back to 
      */
     GameOfLife &operator--();
 

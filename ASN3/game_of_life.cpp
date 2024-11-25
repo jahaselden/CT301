@@ -103,17 +103,22 @@ namespace GOL
         current_ = next_gen_game;
         ++generations_;
         living_cells = next_living_cells;
-
-        ++prev_game_count;
     }
 
     void GameOfLife::SavePrevGen()
     {
-        if (prev_game_count > 99)
+        if (prev_game_count < 99)
         {
             // document game to save in prev_games array
             saved_game curr_game = {current_, live_cell, dead_cell};
+            // cout << "current_ in SavePrevGen(): " << current_ << endl;
             prev_games[prev_game_count] = curr_game;
+            ++prev_game_count;
+            // for (int i = 0; i < prev_game_count; ++i){
+            //     cout << prev_games[i].game_board << endl;
+            // }
+        } else {
+            cout << "Max generations stored, cannot store more generations" << endl;
         }
     }
 
@@ -353,12 +358,40 @@ namespace GOL
     //     }
     // }
 
-    // GameOfLife GameOfLife::operator-(int gens) {}
+    GameOfLife GameOfLife::operator-(int gens) {
+        for (int i = 0; i < gens; ++i){
+            --*this;
+        }
+        return *this;
+    }
 
-    // GameOfLife &GameOfLife::operator--() {}
+    GameOfLife &GameOfLife::operator--() {
+        if (prev_game_count == 0){
+            throw std::domain_error("Cannot roll back generation, there are no previous generations.");
+        }
+        --prev_game_count;
+        saved_game prev_saved_game = prev_games[prev_game_count];
+        current_ = prev_saved_game.game_board;
+        live_cell = prev_saved_game.live;
+        dead_cell = prev_saved_game.dead;
+        --generations_;
+        return *this;
+    }
 
     GameOfLife GameOfLife::operator--(int)
     {
+        if (prev_game_count == 0){
+            throw std::domain_error("Cannot roll back generation, there are no previous generations.");
+        }
+        GameOfLife prev_game = *this;
+        --prev_game.prev_game_count;
+
+        saved_game prev_saved_game = prev_games[prev_game_count];
+        prev_game.current_ = prev_saved_game.game_board;
+        prev_game.live_cell = prev_saved_game.live;
+        prev_game.dead_cell = prev_saved_game.dead;
+        --generations_;
+        return prev_game;
     }
 
     GameOfLife GameOfLife::operator-()
@@ -437,6 +470,7 @@ namespace GOL
     ostream &operator<<(ostream &os, const GameOfLife &game)
     {
         cout << "Generation: " << game.generations_ << endl;
+        //os << game.current_ << endl;
 
         for (size_t i = 0; i < game.current_.length() + 1; i++)
         {
