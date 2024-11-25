@@ -271,7 +271,7 @@ namespace GOL
     int GetAvailableGens();
 
     /**
-     * 
+     * @returns bool indicating if no cells change between the current generation and the next generation
      */
     bool IsStillLife();
 
@@ -289,7 +289,11 @@ namespace GOL
     void ToggleCell(int row, int col);
 
     /**
-     * 
+     * @param row
+     * @param col
+     * @param height
+     * @param width
+     * @returns string
      */
     std::string GenWindow(int row, int col, int height, int width);
 
@@ -305,23 +309,25 @@ namespace GOL
 
     /**
      * @brief calculates the Next int N generations for the current game of life and returns itself
-     * @param int to determine number of generations, accomodates negatives
+     * @param gens to determine number of generations, accomodates negatives
      */
     GameOfLife &operator+=(int gens);
 
     /**
-     * @brief
+     * @brief ecrements the game by gens number of generations.
+     * @param gens the number of generations to decrement to
      */
     GameOfLife &operator-=(int gens);
 
     /**
      * @brief creates a copy of the game and calculates what the game would look like in int N generations and returns that copy
-     * @param int to determine number of generations, accomodates negatives
+     * @param gen to determine number of generations, accomodates negatives
      */
     GameOfLife operator+(int gens);
 
     /**
-     * @brief
+     * @brief decrements the game by that many generations.
+     * @throws domain error if no gens available to roll back to 
      */
     GameOfLife operator-(int gens);
 
@@ -332,12 +338,14 @@ namespace GOL
     GameOfLife &operator--();
 
     /**
-     * @brief
+     * @brief like operator-- but instead returns the a copy of the game state PRIOR to the decrementation
+     * @throws domain error if no gens available to roll back to 
      */
     GameOfLife operator--(int);
 
     /**
-     * @brief
+     * @brief negates game (swaps live cells to be dead cells and vice versa)
+     * @returns copy of game 
      */
     GameOfLife operator-();
 
@@ -371,7 +379,6 @@ namespace GOL
      */
     bool operator>=(const GameOfLife &) const;
 
-    // NOTE: Nothing needed for a friend statement
     friend std::ostream &operator<<(std::ostream &os, const GameOfLife &game);
   };
 

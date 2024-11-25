@@ -297,14 +297,25 @@ namespace GOL
         return percent_living * 100;
     }
 
-    // TODO
-
     int GameOfLife::GetAvailableGens()
     {
         return prev_game_count;
     }
 
-    // bool IsStillLife(){}
+    bool GameOfLife::IsStillLife(){
+        GameOfLife next_game = *this;
+        ++next_game;
+
+        string curr_gameboard = current_;
+        string next_gameboard = next_game.current_;
+        
+        for (size_t i = 0; i < current_.length(); ++i){
+            if (curr_gameboard[i] != next_gameboard[i]){
+                return false;
+            }
+        }
+        return true;
+    }
 
     void GameOfLife::ToggleCell(int index)
     {
